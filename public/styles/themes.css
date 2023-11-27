@@ -1,11 +1,11 @@
 .light-theme {
   --text-color: #1a202c;
-  --text-on-primary-color: #ffffff;
   --background-color: #ffffff;
+
   --primary-color: #1a202c;
+  --primary-hover: #303641;
+  --text-on-primary-color: #ffffff;
+
   --secondary-color: #cbd5e1;
-  --tertiary-color: #cbd5e1;
   --accent-color: #0369a1;
-}
-.dark-theme {
 }
