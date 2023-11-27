@@ -1,6 +1,7 @@
 import { Table } from "../../../api/apiTypes";
 import Dropdown from "../../../ui/Dropdown";
 import DotsIcon from "../../../ui/icons/DotsIcon";
+import DeleteTableDialog from "../DeleteTableDialog/DeleteTableDialog";
 import styles from "./TableDropdown.module.scss";
 
 interface TableDropdownProps {
@@ -17,12 +18,12 @@ function TableDropdown({ table }: TableDropdownProps) {
           </button>
         </Dropdown.Trigger>
         <Dropdown.List>
-          <div className={styles.list}>
+          <div className={`${styles.list} ${styles["slide-in-bottom"]}`}>
             <Dropdown.Item>
               <button className={styles.item}>Переименовать</button>
             </Dropdown.Item>
             <Dropdown.Item>
-              <button className={styles.item}>Удалить</button>
+              <DeleteTableDialog table={table} />
             </Dropdown.Item>
           </div>
         </Dropdown.List>
