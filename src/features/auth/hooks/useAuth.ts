@@ -9,8 +9,8 @@ import { useState, FormEvent, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { UseMutation } from "@reduxjs/toolkit/dist/query/react/buildHooks";
 
-import { AuthData } from "../../api/apiTypes";
-import { useError } from "../../hooks/useError";
+import { AuthData } from "../../../api/apiTypes";
+import { useError } from "../../../hooks/useError";
 
 type AuthMutation = UseMutation<
   MutationDefinition<
