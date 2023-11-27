@@ -1,6 +1,6 @@
 import { Dispatch, FormEvent, SetStateAction } from "react";
 import Input from "../Input/Input";
-import styles from "./AuthForm.module.css";
+import styles from "./AuthForm.module.scss";
 import { Link } from "react-router-dom";
 import PrimaryButton from "../PrimaryButton/PrimaryButton";
 
