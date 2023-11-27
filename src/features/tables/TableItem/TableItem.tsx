@@ -1,6 +1,7 @@
 import { Link } from "react-router-dom";
 import { Table } from "../../../api/apiTypes";
 import styles from "./TableItem.module.scss";
+import TableDropdown from "../TableDropdown/TableDropdown";
 interface TableItemProps {
   table: Table;
 }
@@ -8,7 +9,7 @@ interface TableItemProps {
 function TableItem({ table }: TableItemProps) {
   return (
     <div className={styles.item}>
-      <button className={styles.dropdown}>...</button>
+      <TableDropdown table={table} />
       <Link className={styles.link} to={`/app/collection/${table.id}`}>
         <p className={styles.count}>{table.count}</p>
         <p className={styles.name}>{table.name}</p>
