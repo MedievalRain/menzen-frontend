@@ -18,7 +18,10 @@ function App() {
             <Route index element={<Navigate replace to="/app" />} />
             <Route path="/register" element={<RegisterPage />}></Route>
             <Route path="/login" element={<LoginPage />}></Route>
-            <Route path="/verification" element={<VerificationPage />}></Route>
+            <Route
+              path="/verification/:userId"
+              element={<VerificationPage />}
+            ></Route>
           </Routes>
         </BrowserRouter>
       </Provider>
