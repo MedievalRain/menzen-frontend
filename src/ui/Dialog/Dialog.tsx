@@ -36,7 +36,14 @@ function Dialog({ children }: ChildrenProps) {
 
 function Trigger({ children }: ElementProps) {
   const { open } = useContext(DialogContext);
-  return cloneElement(children, { onClick: open });
+  return cloneElement(children, {
+    onClick: (event: React.MouseEvent<HTMLElement>) => {
+      if (typeof children.props.onClick === "function") {
+        children.props.onClick(event);
+      }
+      open();
+    },
+  });
 }
 
 function Close({ children }: ElementProps) {
