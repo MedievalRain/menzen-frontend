@@ -26,5 +26,14 @@ export const api = createApi({
       }),
       invalidatesTags: ["Subs"],
     }),
+    verify: builder.mutation<void, string>({
+      query: (id) => ({
+        url: "/user/verify",
+        method: "POST",
+        body: { id },
+        credentials: "include",
+      }),
+      invalidatesTags: ["Subs"],
+    }),
   }),
 });
