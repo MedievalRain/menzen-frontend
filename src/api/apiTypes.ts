@@ -9,5 +9,4 @@ export interface RenameTableData {
 export interface Table {
   id: string;
   name: string;
-  createdAt: string;
 }
