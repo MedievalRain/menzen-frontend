@@ -15,7 +15,7 @@ function LoginForm() {
       password={password}
       setEmail={setEmail}
       setPassword={setPassword}
-      submitText="Login"
+      submitText="Вход"
     />
   );
 }

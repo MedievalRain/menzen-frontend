@@ -17,7 +17,7 @@ function RegisterForm() {
       password={password}
       setEmail={setEmail}
       setPassword={setPassword}
-      submitText="Register"
+      submitText="Регистрация"
     />
   );
 }
