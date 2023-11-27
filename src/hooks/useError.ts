@@ -31,26 +31,26 @@ export const useError = (
         const errorType = (error.data as ErrorResponse).error;
         switch (errorType) {
           case "USER_EXISTS":
-            toast.error("User already exists");
+            toast.error("Пользователь уже существует");
             break;
           case "WRONG_PASSWORD":
-            toast.error("Wrong email or password");
+            toast.error("Неправильный Email или пароль");
             break;
           case "VALIDATION_ERROR":
-            toast.error("Bad input");
+            toast.error("Неверный формат данных");
             break;
           case "INTERNAL_ERROR":
-            toast.error("Internal server error");
+            toast.error("Внутреняя ошибка сервера");
             break;
           case "USER_NOT_VERIFIED":
-            toast.error("Email is not verified");
+            toast.error("Email не подтвержден");
             break;
           case "USER_VERIFIED":
             toast.error("Email уже подтвержден");
             navigate("/login");
             break;
           case "USER_NOT_EXISTS":
-            toast.error("User does not exist");
+            toast.error("Пользователь не зарегистрирован");
             navigate("/login");
             break;
           case "UNAUTHORIZED":
@@ -58,10 +58,10 @@ export const useError = (
             navigate("/login");
             break;
           default:
-            toast.error("Uknown error");
+            toast.error("Неизвестная ошибка");
         }
       } else {
-        toast.error("Connection error");
+        toast.error("Ошибка соединения");
       }
     }
   }, [isError]);
