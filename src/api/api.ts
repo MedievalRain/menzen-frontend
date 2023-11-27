@@ -31,5 +31,13 @@ export const api = createApi({
         credentials: "include",
       }),
     }),
+    newTable: builder.mutation<void, string>({
+      query: (name) => ({
+        url: "/table/new",
+        method: "POST",
+        body: { name },
+        credentials: "include",
+      }),
+    }),
   }),
 });
