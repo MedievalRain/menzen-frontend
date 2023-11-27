@@ -45,6 +45,10 @@ export const useError = (
           case "USER_NOT_VERIFIED":
             toast.error("Email is not verified");
             break;
+          case "USER_VERIFIED":
+            toast.error("Email уже подтвержден");
+            navigate("/login");
+            break;
           case "USER_NOT_EXISTS":
             toast.error("User does not exist");
             navigate("/login");
