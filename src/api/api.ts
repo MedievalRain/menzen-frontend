@@ -6,7 +6,6 @@ export const api = createApi({
   baseQuery: fetchBaseQuery({
     baseUrl: import.meta.env.VITE_BASE_API_URL,
   }),
-  tagTypes: ["Subs"],
   endpoints: (builder) => ({
     register: builder.mutation<void, AuthData>({
       query: (authData) => ({
@@ -15,7 +14,6 @@ export const api = createApi({
         body: authData,
         credentials: "include",
       }),
-      invalidatesTags: ["Subs"],
     }),
     login: builder.mutation<void, AuthData>({
       query: (authData) => ({
@@ -24,7 +22,6 @@ export const api = createApi({
         body: authData,
         credentials: "include",
       }),
-      invalidatesTags: ["Subs"],
     }),
     verify: builder.mutation<void, string>({
       query: (id) => ({
@@ -33,7 +30,6 @@ export const api = createApi({
         body: { id },
         credentials: "include",
       }),
-      invalidatesTags: ["Subs"],
     }),
   }),
 });
