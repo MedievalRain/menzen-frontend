@@ -1,5 +1,5 @@
 import { ReactNode } from "react";
-import styles from "./PrimaryButton.module.css";
+import styles from "./PrimaryButton.module.scss";
 interface PrimaryButtonProps {
   children: ReactNode;
   onClick?: () => void;
@@ -7,9 +7,19 @@ interface PrimaryButtonProps {
   disabled?: boolean;
 }
 
-function PrimaryButton({ onClick, children, type, disabled }: PrimaryButtonProps) {
+function PrimaryButton({
+  onClick,
+  children,
+  type,
+  disabled,
+}: PrimaryButtonProps) {
   return (
-    <button type={type} disabled={disabled} className={styles["primary-button"]} onClick={onClick}>
+    <button
+      type={type}
+      disabled={disabled}
+      className={styles["primary-button"]}
+      onClick={onClick}
+    >
       {children}
     </button>
   );
