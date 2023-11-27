@@ -23,7 +23,7 @@ $initial-position: calc(50% - 1.25rem);
 
 .list {
   position: absolute;
-  top: 2.5rem;
+
   background-color: var(--background-color);
   padding: 0.25rem;
   display: flex;
@@ -47,11 +47,11 @@ $initial-position: calc(50% - 1.25rem);
 }
 @keyframes slide-in-bottom {
   0% {
-    transform: translate($initial-position, 5px);
+    transform: translate($initial-position, 2.75rem);
     opacity: 0;
   }
   100% {
-    transform: translate($initial-position, 0);
+    transform: translate($initial-position, 2.75rem);
     opacity: 1;
   }
 }
