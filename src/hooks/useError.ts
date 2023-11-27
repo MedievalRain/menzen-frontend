@@ -10,8 +10,8 @@ type ErrorTypes =
   | "VALIDATION_ERROR"
   | "USER_EXISTS"
   | "USER_NOT_EXISTS"
-  | "USER_NOT_ACTIVE"
   | "USER_VERIFIED"
+  | "USER_NOT_VERIFIED"
   | "INVALID_JWT"
   | "UNAUTHORIZED"
   | "INTERNAL_ERROR";
@@ -42,7 +42,7 @@ export const useError = (
           case "INTERNAL_ERROR":
             toast.error("Internal server error");
             break;
-          case "USER_NOT_ACTIVE":
+          case "USER_NOT_VERIFIED":
             toast.error("Email is not verified");
             break;
           case "USER_NOT_EXISTS":
