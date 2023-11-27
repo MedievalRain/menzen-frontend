@@ -10,7 +10,7 @@ function RegisterForm() {
 
   return (
     <AuthForm
-      linkText="Already have an account?"
+      linkText="Уже есть аккаунт?"
       email={email}
       handleSubmit={handleSubmit}
       linkTo="/login"

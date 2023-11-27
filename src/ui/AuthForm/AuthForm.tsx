@@ -39,7 +39,7 @@ function AuthForm({
           value={password}
           onChange={(e) => setPassword(e.target.value)}
           type="password"
-          placeholder="Password..."
+          placeholder="Пароль..."
           name="password"
         />
         <PrimaryButton type="submit">{submitText}</PrimaryButton>
