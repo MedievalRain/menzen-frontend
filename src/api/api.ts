@@ -1,5 +1,5 @@
 import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
-import { AuthData, RenameTableData } from "./apiTypes";
+import { AuthData, RenameTableData, Table } from "./apiTypes";
 
 export const api = createApi({
   reducerPath: "api",
@@ -44,6 +44,21 @@ export const api = createApi({
         url: "/table/rename",
         method: "POST",
         body: data,
+        credentials: "include",
+      }),
+    }),
+    deleteTable: builder.mutation<void, string>({
+      query: (id) => ({
+        url: "/table",
+        method: "DELETE",
+        params: { id },
+        credentials: "include",
+      }),
+    }),
+    getTables: builder.query<Table[], void>({
+      query: () => ({
+        url: "/table",
+        method: "GET",
         credentials: "include",
       }),
     }),
