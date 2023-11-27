@@ -10,11 +10,23 @@ interface TableDropdownProps {
 function TableDropdown({ table }: TableDropdownProps) {
   return (
     <Dropdown>
-      <Dropdown.Trigger>
-        <button className={styles.trigger}>
-          <DotsIcon />
-        </button>
-      </Dropdown.Trigger>
+      <div className={styles.wrapper}>
+        <Dropdown.Trigger>
+          <button className={styles.trigger}>
+            <DotsIcon />
+          </button>
+        </Dropdown.Trigger>
+        <Dropdown.List>
+          <div className={styles.list}>
+            <Dropdown.Item>
+              <button className={styles.item}>Переименовать</button>
+            </Dropdown.Item>
+            <Dropdown.Item>
+              <button className={styles.item}>Удалить</button>
+            </Dropdown.Item>
+          </div>
+        </Dropdown.List>
+      </div>
     </Dropdown>
   );
 }
