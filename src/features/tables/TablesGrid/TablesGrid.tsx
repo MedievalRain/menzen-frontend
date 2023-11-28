@@ -1,7 +1,7 @@
 import { Table } from "../../../api/apiTypes";
 import NewTableDialog from "../NewTableDialog/NewTableDialog";
 import TableItem from "../TableItem/TableItem";
-import styles from "./TablesGrid.module.css";
+import styles from "./TablesGrid.module.scss";
 interface TablesGridProps {
   tables: Table[];
 }
