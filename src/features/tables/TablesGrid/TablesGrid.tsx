@@ -1,4 +1,5 @@
 import { Table } from "../../../api/apiTypes";
+import NewTableDialog from "../NewTableDialog/NewTableDialog";
 import TableItem from "../TableItem/TableItem";
 import styles from "./TablesGrid.module.css";
 interface TablesGridProps {
@@ -11,6 +12,7 @@ function TablesGrid({ tables }: TablesGridProps) {
       {tables.map((table) => (
         <TableItem table={table} key={table.id} />
       ))}
+      <NewTableDialog />
     </div>
   );
 }
