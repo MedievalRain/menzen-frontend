@@ -15,12 +15,7 @@ function DeleteTableDialog({ table }: DeleteTableDialogProps) {
   return (
     <Dialog>
       <Dialog.Trigger>
-        <button
-          onClick={() => console.log("Clicked DELETE")}
-          className={styles.trigger}
-        >
-          Удалить
-        </button>
+        <button className={styles.trigger}>Удалить</button>
       </Dialog.Trigger>
       <Dialog.Window>
         <div className={styles.window}>
