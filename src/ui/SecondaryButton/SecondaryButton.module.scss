@@ -1,0 +1,16 @@
+.button {
+  border-radius: 0.375rem;
+  padding: 0.5rem 1rem;
+  cursor: pointer;
+  outline: none;
+  border: none;
+  width: max-content;
+  transition: outline 0.075s linear, background-color 0.1s linear;
+  border: 1px solid var(--secondary-color);
+
+  &:focus {
+    outline: 3px;
+    outline-color: var(--accent-color);
+    outline-style: solid;
+  }
+}
