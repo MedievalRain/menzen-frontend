@@ -5,7 +5,7 @@ import store from "./store";
 import LoginPage from "./pages/LoginPage";
 import { Toaster } from "react-hot-toast";
 import VerificationPage from "./pages/VerificationPage";
-import TablesPage from "./pages/TablesPage";
+import TablesPage from "./pages/TablesPage/TablesPage";
 import AppLayout from "./pages/AppLayout/AppLayout";
 import PagesLayout from "./pages/PagesLayout/PagesLayout";
 function App() {
