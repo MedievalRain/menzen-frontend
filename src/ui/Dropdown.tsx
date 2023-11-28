@@ -41,12 +41,13 @@ function Trigger({ children }: ElementProps) {
 
 function Item({ children }: ElementProps) {
   const { close } = useContext(DropdownContext);
+
   return cloneElement(children, {
     onClick: (event: React.MouseEvent<HTMLElement>) => {
+      close();
       if (typeof children.props.onClick === "function") {
         children.props.onClick(event);
       }
-      close();
     },
   });
 }
@@ -55,7 +56,11 @@ function List({ children }: ChildrenProps) {
   const { isOpened, close } = useContext(DropdownContext);
   const listRef = useRef<HTMLDivElement>(null);
   useClickOutside(listRef, close);
-  if (isOpened) return <div ref={listRef}>{children}</div>;
+  return (
+    <div style={{ display: isOpened ? undefined : "none" }} ref={listRef}>
+      {children}
+    </div>
+  );
 }
 
 Dropdown.Trigger = Trigger;
