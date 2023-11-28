@@ -6,6 +6,7 @@ export const api = createApi({
   baseQuery: fetchBaseQuery({
     baseUrl: import.meta.env.VITE_BASE_API_URL,
   }),
+  tagTypes: ["Tables"],
   endpoints: (builder) => ({
     register: builder.mutation<void, AuthData>({
       query: (authData) => ({
@@ -14,6 +15,7 @@ export const api = createApi({
         body: authData,
         credentials: "include",
       }),
+      invalidatesTags: ["Tables"],
     }),
     login: builder.mutation<void, AuthData>({
       query: (authData) => ({
@@ -22,6 +24,7 @@ export const api = createApi({
         body: authData,
         credentials: "include",
       }),
+      invalidatesTags: ["Tables"],
     }),
     verify: builder.mutation<void, string>({
       query: (id) => ({
@@ -30,6 +33,7 @@ export const api = createApi({
         body: { id },
         credentials: "include",
       }),
+      invalidatesTags: ["Tables"],
     }),
     newTable: builder.mutation<void, string>({
       query: (name) => ({
@@ -38,6 +42,7 @@ export const api = createApi({
         body: { name },
         credentials: "include",
       }),
+      invalidatesTags: ["Tables"],
     }),
     renameTable: builder.mutation<void, RenameTableData>({
       query: (data) => ({
@@ -46,6 +51,7 @@ export const api = createApi({
         body: data,
         credentials: "include",
       }),
+      invalidatesTags: ["Tables"],
     }),
     deleteTable: builder.mutation<void, string>({
       query: (id) => ({
@@ -54,6 +60,7 @@ export const api = createApi({
         params: { id },
         credentials: "include",
       }),
+      invalidatesTags: ["Tables"],
     }),
     getTables: builder.query<Table[], void>({
       query: () => ({
@@ -61,6 +68,7 @@ export const api = createApi({
         method: "GET",
         credentials: "include",
       }),
+      providesTags: ["Tables"],
     }),
   }),
 });
