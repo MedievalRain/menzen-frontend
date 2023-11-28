@@ -6,7 +6,7 @@ import LoginPage from "./pages/LoginPage";
 import { Toaster } from "react-hot-toast";
 import VerificationPage from "./pages/VerificationPage";
 import TablesPage from "./pages/TablesPage";
-import AppLayout from "./pages/AppLayout";
+import AppLayout from "./pages/AppLayout/AppLayout";
 import PagesLayout from "./pages/PagesLayout/PagesLayout";
 function App() {
   document.documentElement.classList.remove("dark-theme");
