@@ -1,12 +1,13 @@
-import { useParams } from "react-router-dom";
 import { api } from "../../../api/api";
 import Loader from "../../../ui/Loader/Loader";
 import styles from "./CollectionHead.module.scss";
 import CollectionHeadItem from "../CollectionHeadItem/CollectionHeadItem";
+interface CollectionHeadProps {
+  collectionId: string;
+}
 
-function CollectionHead() {
-  const { collectionId } = useParams();
-  const { data: columns } = api.useGetColumnsQuery(collectionId as string);
+function CollectionHead({ collectionId }: CollectionHeadProps) {
+  const { data: columns } = api.useGetColumnsQuery(collectionId);
   return (
     <thead className={styles.head}>
       <tr className={styles.columns}>
