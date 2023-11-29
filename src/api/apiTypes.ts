@@ -16,3 +16,8 @@ export interface NewColumnData {
   name: string;
   id: string;
 }
+
+export interface Column {
+  name: string;
+  id: string;
+}

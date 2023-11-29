@@ -1,5 +1,11 @@
 import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
-import { AuthData, NewColumnData, RenameTableData, Table } from "./apiTypes";
+import {
+  AuthData,
+  Column,
+  NewColumnData,
+  RenameTableData,
+  Table,
+} from "./apiTypes";
 
 export const api = createApi({
   reducerPath: "api",
@@ -78,6 +84,15 @@ export const api = createApi({
         credentials: "include",
       }),
       invalidatesTags: ["Columns"],
+    }),
+    getColumns: builder.query<Column[], string>({
+      query: (id) => ({
+        url: "/column",
+        method: "GET",
+        params: { id },
+        credentials: "include",
+      }),
+      providesTags: ["Columns"],
     }),
   }),
 });
