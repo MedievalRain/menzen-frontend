@@ -6,6 +6,7 @@ import PagesLayout from "./pages/PagesLayout/PagesLayout";
 import RegisterPage from "./pages/RegisterPage";
 import TablesPage from "./pages/TablesPage/TablesPage";
 import VerificationPage from "./pages/VerificationPage";
+import CollectionPage from "./pages/CollectionPage/CollectionPage";
 export const router = createBrowserRouter([
   {
     path: "/",
@@ -37,11 +38,15 @@ export const router = createBrowserRouter([
         children: [
           {
             index: true,
-            element: <Navigate replace to="tables" />,
+            element: <Navigate replace to="collections" />,
           },
           {
-            path: "tables",
+            path: "collections",
             element: <TablesPage />,
+          },
+          {
+            path: "collections/:tableId",
+            element: <CollectionPage />,
           },
         ],
       },
