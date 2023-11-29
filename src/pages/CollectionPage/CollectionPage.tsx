@@ -1,5 +1,7 @@
+import CollectionTable from "../../features/collection/CollectionTable/CollectionTable";
+
 function CollectionPage() {
-  return <div></div>;
+  return <CollectionTable />;
 }
 
 export default CollectionPage;

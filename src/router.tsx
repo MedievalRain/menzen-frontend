@@ -42,11 +42,13 @@ export const router = createBrowserRouter([
           },
           {
             path: "collections",
-            element: <TablesPage />,
-          },
-          {
-            path: "collections/:tableId",
-            element: <CollectionPage />,
+            children: [
+              { index: true, path: "", element: <TablesPage /> },
+              {
+                path: ":collectionId",
+                element: <CollectionPage />,
+              },
+            ],
           },
         ],
       },
