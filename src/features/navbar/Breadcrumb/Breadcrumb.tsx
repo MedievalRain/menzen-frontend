@@ -6,8 +6,8 @@ function Breadcrumb() {
   return (
     <div>
       {paths.map((path) => (
-        <span className={styles.wrapper}>
-          <Link className={styles.link} key={path.route} to={path.route}>
+        <span className={styles.wrapper} key={path.route}>
+          <Link className={styles.link} to={path.route}>
             {path.name}
           </Link>
         </span>
