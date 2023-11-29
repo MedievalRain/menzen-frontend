@@ -1,12 +1,12 @@
 import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
-import { AuthData, RenameTableData, Table } from "./apiTypes";
+import { AuthData, NewColumnData, RenameTableData, Table } from "./apiTypes";
 
 export const api = createApi({
   reducerPath: "api",
   baseQuery: fetchBaseQuery({
     baseUrl: import.meta.env.VITE_BASE_API_URL,
   }),
-  tagTypes: ["Tables"],
+  tagTypes: ["Tables", "Columns"],
   endpoints: (builder) => ({
     register: builder.mutation<void, AuthData>({
       query: (authData) => ({
@@ -69,6 +69,15 @@ export const api = createApi({
         credentials: "include",
       }),
       providesTags: ["Tables"],
+    }),
+    createColumn: builder.mutation<void, NewColumnData>({
+      query: (data) => ({
+        url: "/column/new",
+        method: "POST",
+        body: data,
+        credentials: "include",
+      }),
+      invalidatesTags: ["Columns"],
     }),
   }),
 });

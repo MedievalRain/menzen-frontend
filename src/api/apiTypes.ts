@@ -11,3 +11,8 @@ export interface Table {
   name: string;
   count: number;
 }
+
+export interface NewColumnData {
+  name: string;
+  id: string;
+}
