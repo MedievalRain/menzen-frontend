@@ -10,7 +10,7 @@ function TableItem({ table }: TableItemProps) {
   return (
     <div className={styles.item}>
       <TableDropdown table={table} />
-      <Link className={styles.link} to={`/app/collection/${table.id}`}>
+      <Link className={styles.link} to={`/app/collections/${table.id}`}>
         <p className={styles.count}>{table.count}</p>
         <p className={styles.name}>{table.name}</p>
       </Link>
