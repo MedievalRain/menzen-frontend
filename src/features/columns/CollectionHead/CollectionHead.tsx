@@ -16,7 +16,7 @@ function CollectionHead() {
           </th>
         )}
         {columns?.map((column) => (
-          <CollectionHeadItem column={column} />
+          <CollectionHeadItem key={column.id} column={column} />
         ))}
       </tr>
     </thead>

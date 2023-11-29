@@ -7,9 +7,11 @@ interface CollectionHeadItemProps {
 
 function CollectionHeadItem({ column }: CollectionHeadItemProps) {
   return (
-    <th className={styles.item} key={column.id}>
-      <div>{column.name}</div>
-      <Input className={styles.input} type="text" />
+    <th>
+      <div className={styles.item}>
+        {column.name}
+        <Input className={styles.input} type="text" placeholder="Поиск..." />
+      </div>
     </th>
   );
 }
