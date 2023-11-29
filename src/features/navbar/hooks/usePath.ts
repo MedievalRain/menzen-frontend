@@ -8,17 +8,17 @@ interface Path {
 }
 
 export const usePath = () => {
-  const { data: tables } = api.useGetTablesQuery();
+  const { data: tables, isSuccess } = api.useGetTablesQuery();
   const [paths, setPaths] = useState<Path[]>([]);
   const location = useLocation();
   useEffect(() => {
     const pathnames = location.pathname
       .split("/")
       .filter((x) => x && x != "app");
-    const newPaths: Path[] = [];
+    let newPaths: Path[] = [];
     if (pathnames[0] === "collections") {
       newPaths.push({ name: "Коллекции", route: "/app/collections" });
-      if (tables) {
+      if (tables && isSuccess) {
         if (pathnames.length > 1) {
           const table = tables.find((table) => table.id === pathnames[1]);
           if (table) {
@@ -28,10 +28,12 @@ export const usePath = () => {
             });
           }
         }
+      } else {
+        newPaths = [];
       }
     }
     if (newPaths.length != 0) setPaths(newPaths);
-  }, [location.pathname]);
+  }, [location.pathname, isSuccess]);
 
   return paths;
 };
