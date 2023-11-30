@@ -98,7 +98,7 @@ export const api = createApi({
     }),
     renameColumn: builder.mutation<void, RenameColumnData>({
       query: (data) => ({
-        url: "/column",
+        url: "/column/name",
         method: "POST",
         body: data,
         credentials: "include",
