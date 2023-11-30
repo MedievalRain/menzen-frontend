@@ -18,7 +18,7 @@ function RenameColumnDialog({ column, collectionId }: RenameColumnDialogProps) {
   useError(isError, error);
   return (
     <div className={styles.wrapper}>
-      <Dialog>
+      <Dialog id="rename-column">
         <Dialog.Trigger>
           <button className={styles.trigger}>Переименовать</button>
         </Dialog.Trigger>

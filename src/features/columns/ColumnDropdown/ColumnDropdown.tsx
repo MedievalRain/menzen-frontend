@@ -11,7 +11,7 @@ interface ColumnDropdownProps {
 
 function ColumnDropdown({ column, collectionId }: ColumnDropdownProps) {
   return (
-    <Dropdown>
+    <Dropdown id="column-dropdown">
       <div className={styles.wrapper}>
         <Dropdown.Trigger>
           <button className={styles.trigger}>

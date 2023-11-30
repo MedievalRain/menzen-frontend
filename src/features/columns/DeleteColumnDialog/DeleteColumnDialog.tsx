@@ -14,7 +14,7 @@ function DeleteColumnDialog({ column, collectionId }: DeleteColumnDialogProps) {
   const [deleteColumn, { isError, error }] = api.useDeleteColumnMutation();
   useError(isError, error);
   return (
-    <Dialog>
+    <Dialog id="delete-column">
       <Dialog.Trigger>
         <button className={styles.trigger}>Удалить</button>
       </Dialog.Trigger>
