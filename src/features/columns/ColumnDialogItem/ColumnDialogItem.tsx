@@ -10,7 +10,7 @@ interface ColumnDialogItemProps {
 
 function ColumnDialogItem({ column, collectionId }: ColumnDialogItemProps) {
   const [changeStatus, { isError, error }] =
-    api.useChangeColumnsStatusMutation();
+    api.useChangeColumnStatusMutation();
   useError(isError, error);
   return (
     <li className={styles.item} key={column.id}>

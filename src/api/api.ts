@@ -108,7 +108,7 @@ export const api = createApi({
       }),
       invalidatesTags: ["Columns"],
     }),
-    changeColumnsStatus: builder.mutation<void, ChangeColumnStatusData>({
+    changeColumnStatus: builder.mutation<void, ChangeColumnStatusData>({
       query: (data) => ({
         url: "/column/status",
         method: "POST",
@@ -117,6 +117,7 @@ export const api = createApi({
       }),
       invalidatesTags: ["Columns"],
     }),
+
     deleteColumn: builder.mutation<void, DeleteColumnData>({
       query: (data) => ({
         url: "/column",
