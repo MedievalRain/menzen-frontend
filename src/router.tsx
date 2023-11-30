@@ -4,7 +4,7 @@ import AppLayout from "./pages/AppLayout/AppLayout";
 import LoginPage from "./pages/LoginPage";
 import PagesLayout from "./pages/PagesLayout/PagesLayout";
 import RegisterPage from "./pages/RegisterPage";
-import TablesPage from "./pages/TablesPage/TablesPage";
+import TablesPage from "./pages/CollectionsPage/CollectionsPage";
 import VerificationPage from "./pages/VerificationPage";
 import CollectionPage from "./pages/CollectionPage/CollectionPage";
 export const router = createBrowserRouter([

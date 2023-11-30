@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { api } from "../api/api";
 
 export const useCollectionName = (collectionId: string | undefined) => {
-  const { data: collections, isSuccess } = api.useGetTablesQuery();
+  const { data: collections, isSuccess } = api.useGetCollectionsQuery();
   const [name, setName] = useState("");
   useEffect(() => {
     const collection = collections?.find(

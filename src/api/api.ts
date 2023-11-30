@@ -4,11 +4,11 @@ import {
   BaseColumnData,
   ChangeColumnOrderData,
   ChangeColumnStatusData,
+  Collection,
   Column,
   NewColumnData,
+  RenameCollectionData,
   RenameColumnData,
-  RenameTableData,
-  Table,
 } from "./apiTypes";
 
 export const api = createApi({
@@ -16,7 +16,7 @@ export const api = createApi({
   baseQuery: fetchBaseQuery({
     baseUrl: import.meta.env.VITE_BASE_API_URL,
   }),
-  tagTypes: ["Tables", "Columns"],
+  tagTypes: ["Collections", "Columns"],
   endpoints: (builder) => ({
     register: builder.mutation<void, AuthData>({
       query: (authData) => ({
@@ -25,7 +25,7 @@ export const api = createApi({
         body: authData,
         credentials: "include",
       }),
-      invalidatesTags: ["Tables"],
+      invalidatesTags: ["Collections"],
     }),
     login: builder.mutation<void, AuthData>({
       query: (authData) => ({
@@ -34,7 +34,7 @@ export const api = createApi({
         body: authData,
         credentials: "include",
       }),
-      invalidatesTags: ["Tables"],
+      invalidatesTags: ["Collections"],
     }),
     verify: builder.mutation<void, string>({
       query: (id) => ({
@@ -43,42 +43,42 @@ export const api = createApi({
         body: { id },
         credentials: "include",
       }),
-      invalidatesTags: ["Tables"],
+      invalidatesTags: ["Collections"],
     }),
-    newTable: builder.mutation<void, string>({
+    newCollection: builder.mutation<void, string>({
       query: (name) => ({
-        url: "/table/new",
+        url: "/collection/new",
         method: "POST",
         body: { name },
         credentials: "include",
       }),
-      invalidatesTags: ["Tables"],
+      invalidatesTags: ["Collections"],
     }),
-    renameTable: builder.mutation<void, RenameTableData>({
+    renameCollection: builder.mutation<void, RenameCollectionData>({
       query: (data) => ({
-        url: "/table/rename",
+        url: "/collection/rename",
         method: "POST",
         body: data,
         credentials: "include",
       }),
-      invalidatesTags: ["Tables"],
+      invalidatesTags: ["Collections"],
     }),
-    deleteTable: builder.mutation<void, string>({
+    deleteCollection: builder.mutation<void, string>({
       query: (id) => ({
-        url: "/table",
+        url: "/collection",
         method: "DELETE",
         params: { id },
         credentials: "include",
       }),
-      invalidatesTags: ["Tables"],
+      invalidatesTags: ["Collections"],
     }),
-    getTables: builder.query<Table[], void>({
+    getCollections: builder.query<Collection[], void>({
       query: () => ({
-        url: "/table",
+        url: "/collection",
         method: "GET",
         credentials: "include",
       }),
-      providesTags: ["Tables"],
+      providesTags: ["Collections"],
     }),
     createColumn: builder.mutation<void, NewColumnData>({
       query: (data) => ({

@@ -5,20 +5,20 @@ import Input from "../../../ui/Input/Input";
 import PrimaryButton from "../../../ui/PrimaryButton/PrimaryButton";
 import SecondaryButton from "../../../ui/SecondaryButton/SecondaryButton";
 import PlusIcon from "../../../ui/icons/PlusIcon";
-import styles from "./NewTableDialog.module.scss";
+import styles from "./NewCollectionDialog.module.scss";
 import { useError } from "../../../hooks/useError";
-function NewTableDialog() {
-  const [newTable, { isError, error }] = api.useNewTableMutation();
+function NewCollectionDialog() {
+  const [newCollection, { isError, error }] = api.useNewCollectionMutation();
   const [name, setName] = useState("");
   useError(isError, error);
   const handleClick = () => {
-    newTable(name);
+    newCollection(name);
     setName("");
   };
 
   return (
     <div className={styles.wrapper}>
-      <Dialog id="new-table">
+      <Dialog id="new-collection">
         <Dialog.Trigger>
           <button className={styles.trigger}>
             <PlusIcon height="5em" />
@@ -48,4 +48,4 @@ function NewTableDialog() {
   );
 }
 
-export default NewTableDialog;
+export default NewCollectionDialog;

@@ -5,20 +5,21 @@ import Dialog from "../../../ui/Dialog/Dialog";
 import Input from "../../../ui/Input/Input";
 import PrimaryButton from "../../../ui/PrimaryButton/PrimaryButton";
 import SecondaryButton from "../../../ui/SecondaryButton/SecondaryButton";
-import styles from "./RenameTableDialog.module.scss";
-import { Table } from "../../../api/apiTypes";
+import styles from "./RenameCollectionDialog.module.scss";
+import { Collection } from "../../../api/apiTypes";
 import StyledDropdownItem from "../../../ui/StyledDropdownItem/StyledDropdownItem";
-interface RenameTableDialogProps {
-  table: Table;
+interface RenameCollectionDialogProps {
+  collection: Collection;
 }
 
-function RenameTableDialog({ table }: RenameTableDialogProps) {
-  const [renameTable, { isError, error }] = api.useRenameTableMutation();
-  const [name, setName] = useState(table.name);
+function RenameCollectionDialog({ collection }: RenameCollectionDialogProps) {
+  const [renameCollection, { isError, error }] =
+    api.useRenameCollectionMutation();
+  const [name, setName] = useState(collection.name);
   useError(isError, error);
   return (
     <div className={styles.wrapper}>
-      <Dialog id="rename-table">
+      <Dialog id="rename-collection">
         <Dialog.Trigger>
           <StyledDropdownItem>Переименовать</StyledDropdownItem>
         </Dialog.Trigger>
@@ -37,7 +38,7 @@ function RenameTableDialog({ table }: RenameTableDialogProps) {
               </Dialog.Close>
               <Dialog.Close>
                 <PrimaryButton
-                  onClick={() => renameTable({ id: table.id, name })}
+                  onClick={() => renameCollection({ id: collection.id, name })}
                 >
                   Переименовать
                 </PrimaryButton>
@@ -50,4 +51,4 @@ function RenameTableDialog({ table }: RenameTableDialogProps) {
   );
 }
 
-export default RenameTableDialog;
+export default RenameCollectionDialog;

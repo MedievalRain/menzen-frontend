@@ -2,11 +2,11 @@ export interface AuthData {
   email: string;
   password: string;
 }
-export interface RenameTableData {
+export interface RenameCollectionData {
   name: string;
   id: string;
 }
-export interface Table {
+export interface Collection {
   id: string;
   name: string;
   count: number;

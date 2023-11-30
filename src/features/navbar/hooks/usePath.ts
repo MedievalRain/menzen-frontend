@@ -8,7 +8,7 @@ interface Path {
 }
 
 export const usePath = () => {
-  const { data: tables, isSuccess } = api.useGetTablesQuery();
+  const { data: collections, isSuccess } = api.useGetCollectionsQuery();
   const [paths, setPaths] = useState<Path[]>([]);
   const location = useLocation();
   useEffect(() => {
@@ -18,9 +18,9 @@ export const usePath = () => {
     let newPaths: Path[] = [];
     if (pathnames[0] === "collections") {
       newPaths.push({ name: "Коллекции", route: "/app/collections" });
-      if (tables && isSuccess) {
+      if (collections && isSuccess) {
         if (pathnames.length > 1) {
-          const table = tables.find((table) => table.id === pathnames[1]);
+          const table = collections.find((table) => table.id === pathnames[1]);
           if (table) {
             newPaths.push({
               name: table.name,

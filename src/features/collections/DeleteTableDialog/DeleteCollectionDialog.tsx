@@ -1,20 +1,21 @@
 import { api } from "../../../api/api";
-import { Table } from "../../../api/apiTypes";
+import { Collection } from "../../../api/apiTypes";
 import { useError } from "../../../hooks/useError";
 import Dialog from "../../../ui/Dialog/Dialog";
 import PrimaryButton from "../../../ui/PrimaryButton/PrimaryButton";
 import SecondaryButton from "../../../ui/SecondaryButton/SecondaryButton";
 import StyledDropdownItem from "../../../ui/StyledDropdownItem/StyledDropdownItem";
-import styles from "./DeleteTableDialog.module.scss";
-interface DeleteTableDialogProps {
-  table: Table;
+import styles from "./DeleteCollectionDialog.module.scss";
+interface DeleteCollectionDialogProps {
+  collection: Collection;
 }
 
-function DeleteTableDialog({ table }: DeleteTableDialogProps) {
-  const [deleteTable, { isError, error }] = api.useDeleteTableMutation();
+function DeleteCollectionDialog({ collection }: DeleteCollectionDialogProps) {
+  const [deleteCollection, { isError, error }] =
+    api.useDeleteCollectionMutation();
   useError(isError, error);
   return (
-    <Dialog id="delete-table">
+    <Dialog id="delete-collection">
       <Dialog.Trigger>
         <StyledDropdownItem>Удалить</StyledDropdownItem>
       </Dialog.Trigger>
@@ -22,7 +23,7 @@ function DeleteTableDialog({ table }: DeleteTableDialogProps) {
         <div className={styles.window}>
           <div>
             <span>Удалить коллекцию </span>
-            <span>{table.name}</span>
+            <span>{collection.name}</span>
             <span>?</span>
           </div>
           <div className={styles.buttons}>
@@ -30,7 +31,7 @@ function DeleteTableDialog({ table }: DeleteTableDialogProps) {
               <SecondaryButton>Отмена</SecondaryButton>
             </Dialog.Close>
             <Dialog.Close>
-              <PrimaryButton onClick={() => deleteTable(table.id)}>
+              <PrimaryButton onClick={() => deleteCollection(collection.id)}>
                 Удалить
               </PrimaryButton>
             </Dialog.Close>
@@ -41,4 +42,4 @@ function DeleteTableDialog({ table }: DeleteTableDialogProps) {
   );
 }
 
-export default DeleteTableDialog;
+export default DeleteCollectionDialog;
