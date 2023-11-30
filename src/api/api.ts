@@ -3,6 +3,7 @@ import {
   AuthData,
   Column,
   NewColumnData,
+  RenameColumnData,
   RenameTableData,
   Table,
 } from "./apiTypes";
@@ -93,6 +94,15 @@ export const api = createApi({
         credentials: "include",
       }),
       providesTags: ["Columns"],
+    }),
+    renameColumn: builder.mutation<void, RenameColumnData>({
+      query: (data) => ({
+        url: "/column",
+        method: "POST",
+        body: data,
+        credentials: "include",
+      }),
+      invalidatesTags: ["Columns"],
     }),
   }),
 });

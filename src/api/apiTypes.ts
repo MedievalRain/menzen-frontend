@@ -21,3 +21,9 @@ export interface Column {
   name: string;
   id: string;
 }
+
+export interface RenameColumnData {
+  name: string;
+  columnId: string;
+  collectionId: string;
+}
