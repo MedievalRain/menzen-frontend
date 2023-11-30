@@ -7,6 +7,7 @@ interface InputProps {
   className?: string;
   type: string;
   name?: string;
+  id?: string;
 }
 
 const Input = memo(function Input({
@@ -16,9 +17,11 @@ const Input = memo(function Input({
   type,
   name,
   className,
+  id,
 }: InputProps) {
   return (
     <input
+      id={id}
       name={name}
       type={type}
       className={`${styles.input} ${className}`}
