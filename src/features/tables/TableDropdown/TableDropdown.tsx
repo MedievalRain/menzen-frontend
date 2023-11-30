@@ -11,7 +11,7 @@ interface TableDropdownProps {
 
 function TableDropdown({ table }: TableDropdownProps) {
   return (
-    <Dropdown>
+    <Dropdown id="table-dropdown">
       <div className={styles.wrapper}>
         <Dropdown.Trigger>
           <button className={styles.trigger}>

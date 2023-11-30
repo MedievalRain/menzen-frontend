@@ -13,7 +13,7 @@ function DeleteTableDialog({ table }: DeleteTableDialogProps) {
   const [deleteTable, { isError, error }] = api.useDeleteTableMutation();
   useError(isError, error);
   return (
-    <Dialog>
+    <Dialog id="delete-table">
       <Dialog.Trigger>
         <button className={styles.trigger}>Удалить</button>
       </Dialog.Trigger>

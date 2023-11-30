@@ -17,7 +17,7 @@ function RenameTableDialog({ table }: RenameTableDialogProps) {
   useError(isError, error);
   return (
     <div className={styles.wrapper}>
-      <Dialog>
+      <Dialog id="rename-table">
         <Dialog.Trigger>
           <button className={styles.trigger}>Переименовать</button>
         </Dialog.Trigger>

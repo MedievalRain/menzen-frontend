@@ -13,7 +13,7 @@ function NewTableDialog() {
   useError(isError, error);
   return (
     <div className={styles.wrapper}>
-      <Dialog>
+      <Dialog id="new-table">
         <Dialog.Trigger>
           <button className={styles.trigger}>
             <PlusIcon height="5em" />
