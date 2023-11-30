@@ -1,5 +1,6 @@
-import { api } from "../../../api/api";
-import { Collection } from "../../../api/apiTypes";
+import { collectionApi } from "../../../api/collectionApi/collectionApi";
+import { Collection } from "../../../api/collectionApi/collectionApiTypes";
+
 import { useError } from "../../../hooks/useError";
 import Dialog from "../../../ui/Dialog/Dialog";
 import PrimaryButton from "../../../ui/PrimaryButton/PrimaryButton";
@@ -12,7 +13,7 @@ interface DeleteCollectionDialogProps {
 
 function DeleteCollectionDialog({ collection }: DeleteCollectionDialogProps) {
   const [deleteCollection, { isError, error }] =
-    api.useDeleteCollectionMutation();
+    collectionApi.useDeleteCollectionMutation();
   useError(isError, error);
   return (
     <Dialog id="delete-collection">

@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
 import styles from "./CollectionItem.module.scss";
 import CollectionDropdown from "../CollectionDropdown/CollectionDropdown";
-import { Collection } from "../../../api/apiTypes";
+import { Collection } from "../../../api/collectionApi/collectionApiTypes";
 
 interface CollectionItemProps {
   collection: Collection;

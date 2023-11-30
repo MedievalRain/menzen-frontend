@@ -1,8 +1,9 @@
 import { useEffect, useState } from "react";
-import { api } from "../api/api";
+import { collectionApi } from "../api/collectionApi/collectionApi";
 
 export const useCollectionName = (collectionId: string | undefined) => {
-  const { data: collections, isSuccess } = api.useGetCollectionsQuery();
+  const { data: collections, isSuccess } =
+    collectionApi.useGetCollectionsQuery();
   const [name, setName] = useState("");
   useEffect(() => {
     const collection = collections?.find(

@@ -1,20 +1,21 @@
 import { useState } from "react";
-import { api } from "../../../api/api";
 import { useError } from "../../../hooks/useError";
 import Dialog from "../../../ui/Dialog/Dialog";
 import Input from "../../../ui/Input/Input";
 import PrimaryButton from "../../../ui/PrimaryButton/PrimaryButton";
 import SecondaryButton from "../../../ui/SecondaryButton/SecondaryButton";
 import styles from "./RenameCollectionDialog.module.scss";
-import { Collection } from "../../../api/apiTypes";
+
 import StyledDropdownItem from "../../../ui/StyledDropdownItem/StyledDropdownItem";
+import { collectionApi } from "../../../api/collectionApi/collectionApi";
+import { Collection } from "../../../api/collectionApi/collectionApiTypes";
 interface RenameCollectionDialogProps {
   collection: Collection;
 }
 
 function RenameCollectionDialog({ collection }: RenameCollectionDialogProps) {
   const [renameCollection, { isError, error }] =
-    api.useRenameCollectionMutation();
+    collectionApi.useRenameCollectionMutation();
   const [name, setName] = useState(collection.name);
   useError(isError, error);
   return (

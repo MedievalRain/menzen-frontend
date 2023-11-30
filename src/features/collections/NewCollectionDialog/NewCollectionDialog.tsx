@@ -1,5 +1,4 @@
 import { useState } from "react";
-import { api } from "../../../api/api";
 import Dialog from "../../../ui/Dialog/Dialog";
 import Input from "../../../ui/Input/Input";
 import PrimaryButton from "../../../ui/PrimaryButton/PrimaryButton";
@@ -7,8 +6,10 @@ import SecondaryButton from "../../../ui/SecondaryButton/SecondaryButton";
 import PlusIcon from "../../../ui/icons/PlusIcon";
 import styles from "./NewCollectionDialog.module.scss";
 import { useError } from "../../../hooks/useError";
+import { collectionApi } from "../../../api/collectionApi/collectionApi";
 function NewCollectionDialog() {
-  const [newCollection, { isError, error }] = api.useNewCollectionMutation();
+  const [newCollection, { isError, error }] =
+    collectionApi.useNewCollectionMutation();
   const [name, setName] = useState("");
   useError(isError, error);
   const handleClick = () => {

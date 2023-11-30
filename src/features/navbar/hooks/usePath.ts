@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
-import { api } from "../../../api/api";
 import { useLocation } from "react-router-dom";
+import { collectionApi } from "../../../api/collectionApi/collectionApi";
 
 interface Path {
   name: string;
@@ -8,7 +8,8 @@ interface Path {
 }
 
 export const usePath = () => {
-  const { data: collections, isSuccess } = api.useGetCollectionsQuery();
+  const { data: collections, isSuccess } =
+    collectionApi.useGetCollectionsQuery();
   const [paths, setPaths] = useState<Path[]>([]);
   const location = useLocation();
   useEffect(() => {
@@ -20,10 +21,12 @@ export const usePath = () => {
       newPaths.push({ name: "Коллекции", route: "/app/collections" });
       if (collections && isSuccess) {
         if (pathnames.length > 1) {
-          const table = collections.find((table) => table.id === pathnames[1]);
-          if (table) {
+          const collection = collections.find(
+            (collection) => collection.id === pathnames[1]
+          );
+          if (collection) {
             newPaths.push({
-              name: table.name,
+              name: collection.name,
               route: `/app/collections/${pathnames[1]}`,
             });
           }

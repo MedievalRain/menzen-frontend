@@ -1,7 +1,8 @@
 import styles from "./CollectionsGrid.module.scss";
-import { Collection } from "../../../api/apiTypes";
+
 import CollectionItem from "../CollectionItem/CollectionItem";
 import NewCollectionDialog from "../NewCollectionDialog/NewCollectionDialog";
+import { Collection } from "../../../api/collectionApi/collectionApiTypes";
 interface CollectionsGridProps {
   collections: Collection[];
 }

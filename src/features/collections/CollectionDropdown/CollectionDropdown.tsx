@@ -1,4 +1,4 @@
-import { Collection } from "../../../api/apiTypes";
+import { Collection } from "../../../api/collectionApi/collectionApiTypes";
 import Dropdown from "../../../ui/Dropdown";
 import DotsIcon from "../../../ui/icons/DotsIcon";
 import DeleteCollectionDialog from "../DeleteTableDialog/DeleteCollectionDialog";
