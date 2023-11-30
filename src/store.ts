@@ -1,8 +1,10 @@
 import { configureStore } from "@reduxjs/toolkit";
 import { api } from "./api/api";
+import uiReducer from "./ui/UIControls/uiSlice";
 
 const store = configureStore({
   reducer: {
+    ui: uiReducer,
     [api.reducerPath]: api.reducer,
   },
   middleware: (getDefaultMiddleware) =>
