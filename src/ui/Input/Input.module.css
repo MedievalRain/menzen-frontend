@@ -4,7 +4,7 @@
   box-shadow: none;
   padding: 0.5rem 0;
   text-indent: 0.5rem;
-  transition: outline 0.075s linear, outline-color 0.25s ease-in-out;
+  transition: outline 0.075s linear;
   outline: 1px;
   outline-color: var(--tertiary-color);
   outline-style: solid;
