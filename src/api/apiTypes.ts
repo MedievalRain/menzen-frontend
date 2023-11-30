@@ -24,22 +24,18 @@ export interface Column {
   enabled: boolean;
 }
 
-export interface RenameColumnData {
+export interface BaseColumnData {
+  columnId: string;
+  collectionId: string;
+}
+
+export interface RenameColumnData extends BaseColumnData {
   name: string;
-  columnId: string;
-  collectionId: string;
 }
-export interface DeleteColumnData {
-  columnId: string;
-  collectionId: string;
-}
-export interface ChangeColumnStatusData {
+
+export interface ChangeColumnStatusData extends BaseColumnData {
   enabled: boolean;
-  columnId: string;
-  collectionId: string;
 }
-export interface ChangeColumnOrderData {
+export interface ChangeColumnOrderData extends BaseColumnData {
   direction: "up" | "down";
-  columnId: string;
-  collectionId: string;
 }

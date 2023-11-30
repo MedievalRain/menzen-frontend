@@ -1,10 +1,10 @@
 import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
 import {
   AuthData,
+  BaseColumnData,
   ChangeColumnOrderData,
   ChangeColumnStatusData,
   Column,
-  DeleteColumnData,
   NewColumnData,
   RenameColumnData,
   RenameTableData,
@@ -128,7 +128,7 @@ export const api = createApi({
       invalidatesTags: ["Columns"],
     }),
 
-    deleteColumn: builder.mutation<void, DeleteColumnData>({
+    deleteColumn: builder.mutation<void, BaseColumnData>({
       query: (data) => ({
         url: "/column",
         method: "DELETE",
