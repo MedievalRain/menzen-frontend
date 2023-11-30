@@ -5,6 +5,7 @@ interface PrimaryButtonProps {
   onClick?: () => void;
   type?: "button" | "submit" | "reset" | undefined;
   disabled?: boolean;
+  className?: string;
 }
 
 function PrimaryButton({
@@ -12,12 +13,13 @@ function PrimaryButton({
   children,
   type,
   disabled,
+  className,
 }: PrimaryButtonProps) {
   return (
     <button
       type={type}
       disabled={disabled}
-      className={styles["primary-button"]}
+      className={`${styles["primary-button"]} ${className}`}
       onClick={onClick}
     >
       {children}
