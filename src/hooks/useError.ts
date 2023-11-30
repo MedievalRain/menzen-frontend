@@ -5,16 +5,21 @@ import toast from "react-hot-toast";
 import { useNavigate } from "react-router-dom";
 
 type ErrorTypes =
+  | "UNAUTHORIZED"
+  | "INTERNAL_ERROR"
   | "JWT"
   | "WRONG_PASSWORD"
   | "VALIDATION_ERROR"
   | "USER_EXISTS"
   | "USER_NOT_EXISTS"
+  | "USER_NOT_ACTIVE"
   | "USER_VERIFIED"
   | "USER_NOT_VERIFIED"
   | "INVALID_JWT"
-  | "UNAUTHORIZED"
-  | "INTERNAL_ERROR";
+  | "COLLECTION_NOT_EXISTS"
+  | "COLUMN_EXISTS"
+  | "COLUMN_NOT_EXIST"
+  | "ORDERING_ERROR";
 
 interface ErrorResponse {
   error: ErrorTypes;
@@ -43,6 +48,7 @@ export const useError = (
             toast.error("Внутреняя ошибка сервера");
             break;
           case "USER_NOT_VERIFIED":
+          case "USER_NOT_ACTIVE":
             toast.error("Email не подтвержден");
             break;
           case "USER_VERIFIED":
@@ -53,8 +59,22 @@ export const useError = (
             toast.error("Пользователь не зарегистрирован");
             navigate("/login");
             break;
+          case "COLLECTION_NOT_EXISTS":
+            toast.error("Коллекция не существует");
+            break;
+          case "COLUMN_EXISTS":
+            toast.error("Поле с таким именем уже существует");
+            break;
+          case "COLUMN_NOT_EXIST":
+            toast.error("Поле не уже существует");
+            break;
+          case "ORDERING_ERROR":
+            toast.error("Неверный порядок полей");
+            break;
+
           case "UNAUTHORIZED":
           case "INVALID_JWT":
+          case "JWT":
             navigate("/login");
             break;
           default:
