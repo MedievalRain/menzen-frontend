@@ -44,7 +44,7 @@ function ColumnDropdown({ column, collectionId }: ColumnDropdownProps) {
                 </button>
               </Dropdown.Item>
             )}
-            {columns && columns.at(-1).id != column.id && (
+            {columns && columns[columns.length - 1].id != column.id && (
               <Dropdown.Item>
                 <button
                   onClick={() =>
