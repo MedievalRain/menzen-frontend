@@ -4,31 +4,47 @@ import {
   useContext,
   cloneElement,
   useRef,
+  PropsWithChildren,
 } from "react";
 import styles from "./Dialog.module.css";
 import ReactDOM from "react-dom";
-import { useClickOutside } from "../../hooks/useClickOutside";
+
 import { ChildrenProps, ElementProps } from "../types";
+import { useCloseOutside } from "../../hooks/useCloseOutside";
+import { useAppDispatch } from "../../hooks/storeHooks";
+import { openComponent, closeComponent } from "../UIControls/uiSlice";
 
 interface ContextType {
   isOpened: boolean;
   open: () => void;
   close: () => void;
+  id: string;
 }
 
 const defaultContextValue: ContextType = {
   isOpened: false,
   open: () => {},
   close: () => {},
+  id: "",
 };
 const DialogContext = createContext<ContextType>(defaultContextValue);
 
-function Dialog({ children }: ChildrenProps) {
+interface DialogProps extends PropsWithChildren {
+  id: string;
+}
+function Dialog({ children, id }: DialogProps) {
   const [isOpened, setIsOpened] = useState(false);
-  const open = () => setIsOpened(true);
-  const close = () => setIsOpened(false);
+  const dispatch = useAppDispatch();
+  const open = () => {
+    setIsOpened(true);
+    dispatch(openComponent(id));
+  };
+  const close = () => {
+    setIsOpened(false);
+    dispatch(closeComponent(id));
+  };
   return (
-    <DialogContext.Provider value={{ isOpened, open, close }}>
+    <DialogContext.Provider value={{ isOpened, open, close, id }}>
       {children}
     </DialogContext.Provider>
   );
@@ -59,9 +75,9 @@ function Close({ children }: ElementProps) {
 }
 
 function Window({ children }: ChildrenProps) {
-  const { isOpened, close } = useContext(DialogContext);
+  const { isOpened, close, id } = useContext(DialogContext);
   const windowRef = useRef<HTMLDivElement>(null);
-  useClickOutside(windowRef, close);
+  useCloseOutside(windowRef, close, id);
   if (isOpened)
     return ReactDOM.createPortal(
       <div className={styles["outside-container"]}>

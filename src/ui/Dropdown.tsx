@@ -1,4 +1,5 @@
 import {
+  PropsWithChildren,
   cloneElement,
   createContext,
   useContext,
@@ -6,15 +7,19 @@ import {
   useState,
 } from "react";
 import { ChildrenProps, ElementProps } from "./types";
-import { useClickOutside } from "../hooks/useClickOutside";
+import { useAppDispatch } from "../hooks/storeHooks";
+import { closeComponent, openComponent } from "./UIControls/uiSlice";
+import { useCloseOutside } from "../hooks/useCloseOutside";
 
 interface ContextType {
   isOpened: boolean;
+  id: string;
   open: () => void;
   close: () => void;
 }
 
 const defaultContextValue: ContextType = {
+  id: "",
   isOpened: false,
   open: () => {},
   close: () => {},
@@ -22,13 +27,23 @@ const defaultContextValue: ContextType = {
 
 const DropdownContext = createContext<ContextType>(defaultContextValue);
 
-function Dropdown({ children }: ChildrenProps) {
+interface DropdownProps extends PropsWithChildren {
+  id: string;
+}
+function Dropdown({ children, id }: DropdownProps) {
   const [isOpened, setIsOpened] = useState(false);
-  const open = () => setIsOpened(true);
-  const close = () => setIsOpened(false);
+  const dispatch = useAppDispatch();
+  const open = () => {
+    setIsOpened(true);
+    dispatch(openComponent(id));
+  };
+  const close = () => {
+    setIsOpened(false);
+    dispatch(closeComponent(id));
+  };
 
   return (
-    <DropdownContext.Provider value={{ isOpened, open, close }}>
+    <DropdownContext.Provider value={{ isOpened, open, close, id }}>
       {children}
     </DropdownContext.Provider>
   );
@@ -53,14 +68,10 @@ function Item({ children }: ElementProps) {
 }
 
 function List({ children }: ChildrenProps) {
-  const { isOpened, close } = useContext(DropdownContext);
+  const { isOpened, close, id } = useContext(DropdownContext);
   const listRef = useRef<HTMLDivElement>(null);
-  useClickOutside(listRef, close);
-  return (
-    <div style={{ display: isOpened ? undefined : "none" }} ref={listRef}>
-      {children}
-    </div>
-  );
+  useCloseOutside(listRef, close, id);
+  if (isOpened) return <div ref={listRef}>{children}</div>;
 }
 
 Dropdown.Trigger = Trigger;
