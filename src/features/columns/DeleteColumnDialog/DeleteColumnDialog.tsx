@@ -1,5 +1,5 @@
-import { api } from "../../../api/api";
-import { Column } from "../../../api/apiTypes";
+import { columnApi } from "../../../api/columnApi/columnApi";
+import { Column } from "../../../api/columnApi/columnApiTypes";
 import { useError } from "../../../hooks/useError";
 import Dialog from "../../../ui/Dialog/Dialog";
 import PrimaryButton from "../../../ui/PrimaryButton/PrimaryButton";
@@ -12,7 +12,8 @@ interface DeleteColumnDialogProps {
 }
 
 function DeleteColumnDialog({ column, collectionId }: DeleteColumnDialogProps) {
-  const [deleteColumn, { isError, error }] = api.useDeleteColumnMutation();
+  const [deleteColumn, { isError, error }] =
+    columnApi.useDeleteColumnMutation();
   useError(isError, error);
   return (
     <Dialog id="delete-column">

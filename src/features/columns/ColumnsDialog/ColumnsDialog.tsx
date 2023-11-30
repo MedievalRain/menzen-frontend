@@ -1,4 +1,4 @@
-import { api } from "../../../api/api";
+import { columnApi } from "../../../api/columnApi/columnApi";
 import { useCollectionName } from "../../../hooks/useCollectionName";
 import Dialog from "../../../ui/Dialog/Dialog";
 import PrimaryButton from "../../../ui/PrimaryButton/PrimaryButton";
@@ -10,7 +10,7 @@ interface ColumnsDialogProps {
 }
 
 function ColumnsDialog({ collectionId }: ColumnsDialogProps) {
-  const { data: columns } = api.useGetColumnsQuery(collectionId);
+  const { data: columns } = columnApi.useGetColumnsQuery(collectionId);
   const collectionName = useCollectionName(collectionId);
   return (
     <Dialog id="column-dialog">

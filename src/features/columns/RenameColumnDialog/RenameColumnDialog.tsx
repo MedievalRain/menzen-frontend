@@ -1,6 +1,5 @@
 import { useState } from "react";
-import { api } from "../../../api/api";
-import { Column } from "../../../api/apiTypes";
+
 import { useError } from "../../../hooks/useError";
 import Dialog from "../../../ui/Dialog/Dialog";
 import Input from "../../../ui/Input/Input";
@@ -8,13 +7,16 @@ import PrimaryButton from "../../../ui/PrimaryButton/PrimaryButton";
 import SecondaryButton from "../../../ui/SecondaryButton/SecondaryButton";
 import styles from "./RenameColumnDialog.module.scss";
 import StyledDropdownItem from "../../../ui/StyledDropdownItem/StyledDropdownItem";
+import { columnApi } from "../../../api/columnApi/columnApi";
+import { Column } from "../../../api/columnApi/columnApiTypes";
 interface RenameColumnDialogProps {
   column: Column;
   collectionId: string;
 }
 
 function RenameColumnDialog({ column, collectionId }: RenameColumnDialogProps) {
-  const [renameColumn, { isError, error }] = api.useRenameColumnMutation();
+  const [renameColumn, { isError, error }] =
+    columnApi.useRenameColumnMutation();
   const [name, setName] = useState(column.name);
   useError(isError, error);
   return (

@@ -1,5 +1,5 @@
-import { api } from "../../../api/api";
-import { Column } from "../../../api/apiTypes";
+import { columnApi } from "../../../api/columnApi/columnApi";
+import { Column } from "../../../api/columnApi/columnApiTypes";
 import { useError } from "../../../hooks/useError";
 import ColumnDropdown from "../ColumnDropdown/ColumnDropdown";
 import styles from "./ColumnDialogItem.module.scss";
@@ -10,7 +10,7 @@ interface ColumnDialogItemProps {
 
 function ColumnDialogItem({ column, collectionId }: ColumnDialogItemProps) {
   const [changeStatus, { isError, error }] =
-    api.useChangeColumnStatusMutation();
+    columnApi.useChangeColumnStatusMutation();
   useError(isError, error);
   return (
     <li className={styles.item} key={column.id}>

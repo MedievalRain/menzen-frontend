@@ -6,14 +6,14 @@ import {
   Column,
   NewColumnData,
   RenameColumnData,
-} from "./apiTypes";
+} from "./columnApiTypes";
 
-export const api = createApi({
-  reducerPath: "api",
+export const columnApi = createApi({
+  reducerPath: "columnApi",
   baseQuery: fetchBaseQuery({
     baseUrl: import.meta.env.VITE_BASE_API_URL,
   }),
-  tagTypes: ["Collections", "Columns"],
+  tagTypes: ["Columns"],
   endpoints: (builder) => ({
     createColumn: builder.mutation<void, NewColumnData>({
       query: (data) => ({

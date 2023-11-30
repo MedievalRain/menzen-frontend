@@ -1,21 +1,23 @@
 import { configureStore } from "@reduxjs/toolkit";
-import { api } from "./api/api";
+
 import uiReducer from "./ui/UIControls/uiSlice";
 import { authApi } from "./api/authApi/authApi";
 import { collectionApi } from "./api/collectionApi/collectionApi";
+import { columnApi } from "./api/columnApi/columnApi";
 
 const store = configureStore({
   reducer: {
     ui: uiReducer,
-    [api.reducerPath]: api.reducer,
+
     [authApi.reducerPath]: authApi.reducer,
     [collectionApi.reducerPath]: collectionApi.reducer,
+    [columnApi.reducerPath]: columnApi.reducer,
   },
   middleware: (getDefaultMiddleware) =>
     getDefaultMiddleware({}).concat([
-      api.middleware,
       authApi.middleware,
       collectionApi.middleware,
+      columnApi.middleware,
     ]),
 });
 

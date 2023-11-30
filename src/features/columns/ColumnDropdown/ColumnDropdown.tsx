@@ -1,5 +1,5 @@
-import { api } from "../../../api/api";
-import { Column } from "../../../api/apiTypes";
+import { columnApi } from "../../../api/columnApi/columnApi";
+import { Column } from "../../../api/columnApi/columnApiTypes";
 import { useError } from "../../../hooks/useError";
 import Dropdown from "../../../ui/Dropdown";
 import StyledDropdownItem from "../../../ui/StyledDropdownItem/StyledDropdownItem";
@@ -13,8 +13,9 @@ interface ColumnDropdownProps {
 }
 
 function ColumnDropdown({ column, collectionId }: ColumnDropdownProps) {
-  const { data: columns } = api.useGetColumnsQuery(collectionId);
-  const [changeOrder, { isError, error }] = api.useChangeColumnOrderMutation();
+  const { data: columns } = columnApi.useGetColumnsQuery(collectionId);
+  const [changeOrder, { isError, error }] =
+    columnApi.useChangeColumnOrderMutation();
   useError(isError, error);
   return (
     <Dropdown id="column-dropdown">

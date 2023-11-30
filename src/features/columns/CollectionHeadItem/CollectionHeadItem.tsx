@@ -1,4 +1,4 @@
-import { Column } from "../../../api/apiTypes";
+import { Column } from "../../../api/columnApi/columnApiTypes";
 import Input from "../../../ui/Input/Input";
 import styles from "./CollectionHeadItem.module.scss";
 interface CollectionHeadItemProps {
