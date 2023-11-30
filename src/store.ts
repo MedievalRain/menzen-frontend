@@ -4,6 +4,7 @@ import uiReducer from "./ui/UIControls/uiSlice";
 import { authApi } from "./api/authApi/authApi";
 import { collectionApi } from "./api/collectionApi/collectionApi";
 import { columnApi } from "./api/columnApi/columnApi";
+import { coinApi } from "./api/coinApi/coinApi";
 
 const store = configureStore({
   reducer: {
@@ -12,12 +13,14 @@ const store = configureStore({
     [authApi.reducerPath]: authApi.reducer,
     [collectionApi.reducerPath]: collectionApi.reducer,
     [columnApi.reducerPath]: columnApi.reducer,
+    [coinApi.reducerPath]: coinApi.reducer,
   },
   middleware: (getDefaultMiddleware) =>
     getDefaultMiddleware({}).concat([
       authApi.middleware,
       collectionApi.middleware,
       columnApi.middleware,
+      coinApi.middleware,
     ]),
 });
 
