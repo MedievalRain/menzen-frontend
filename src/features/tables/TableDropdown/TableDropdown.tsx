@@ -19,7 +19,7 @@ function TableDropdown({ table }: TableDropdownProps) {
           </button>
         </Dropdown.Trigger>
         <Dropdown.List>
-          <div className={`${styles.list} ${styles["slide-in-bottom"]}`}>
+          <div className={`${styles.list}`}>
             <Dropdown.Item>
               <RenameTableDialog table={table} />
             </Dropdown.Item>
