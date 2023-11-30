@@ -1,4 +1,5 @@
 import PrimaryButton from "../../../ui/PrimaryButton/PrimaryButton";
+import ColumnsDialog from "../../columns/ColumnsDialog/ColumnsDialog";
 import styles from "./TableControls.module.scss";
 
 interface TableControlsProps {
@@ -8,7 +9,7 @@ interface TableControlsProps {
 function TableControls({ collectionId }: TableControlsProps) {
   return (
     <div className={styles.wrapper}>
-      <PrimaryButton>Редактировать</PrimaryButton>
+      <ColumnsDialog collectionId={collectionId} />
       <div></div>
       <PrimaryButton>Добавить монету</PrimaryButton>
     </div>
