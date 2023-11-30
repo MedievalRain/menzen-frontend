@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import PrimaryButton from "../../../ui/PrimaryButton/PrimaryButton";
 import ColumnsDialog from "../../columns/ColumnsDialog/ColumnsDialog";
 import styles from "./TableControls.module.scss";
@@ -11,7 +12,9 @@ function TableControls({ collectionId }: TableControlsProps) {
     <div className={styles.wrapper}>
       <ColumnsDialog collectionId={collectionId} />
       <div></div>
-      <PrimaryButton>Добавить монету</PrimaryButton>
+      <Link to={"new"}>
+        <PrimaryButton>Добавить монету</PrimaryButton>
+      </Link>
     </div>
   );
 }

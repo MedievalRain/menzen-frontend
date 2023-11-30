@@ -7,6 +7,7 @@ import RegisterPage from "./pages/RegisterPage";
 import TablesPage from "./pages/CollectionsPage/CollectionsPage";
 import VerificationPage from "./pages/VerificationPage";
 import CollectionPage from "./pages/CollectionPage/CollectionPage";
+import NewCoinPage from "./pages/NewCoinPage/NewCoinPage";
 export const router = createBrowserRouter([
   {
     path: "/",
@@ -46,7 +47,10 @@ export const router = createBrowserRouter([
               { index: true, path: "", element: <TablesPage /> },
               {
                 path: ":collectionId",
-                element: <CollectionPage />,
+                children: [
+                  { index: true, path: "", element: <CollectionPage /> },
+                  { path: "new", element: <NewCoinPage /> },
+                ],
               },
             ],
           },
