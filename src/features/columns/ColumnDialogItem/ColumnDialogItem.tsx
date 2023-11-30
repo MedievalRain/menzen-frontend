@@ -28,7 +28,6 @@ function ColumnDialogItem({ column, collectionId }: ColumnDialogItemProps) {
         />
         <span>{column.name}</span>
       </div>
-
       <ColumnDropdown column={column} collectionId={collectionId} />
     </li>
   );
