@@ -1,9 +1,9 @@
-import { api } from "../../api/api";
+import { authApi } from "../../api/authApi/authApi";
 import AuthForm from "../../ui/AuthForm/AuthForm";
 import { useAuth } from "./hooks/useAuth";
 function LoginForm() {
   const { email, setEmail, password, setPassword, handleSubmit } = useAuth(
-    api.useLoginMutation,
+    authApi.useLoginMutation,
     "/app"
   );
   return (

@@ -1,7 +1,3 @@
-export interface AuthData {
-  email: string;
-  password: string;
-}
 export interface RenameCollectionData {
   name: string;
   id: string;

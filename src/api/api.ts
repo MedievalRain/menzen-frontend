@@ -1,6 +1,5 @@
 import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
 import {
-  AuthData,
   BaseColumnData,
   ChangeColumnOrderData,
   ChangeColumnStatusData,
@@ -18,33 +17,6 @@ export const api = createApi({
   }),
   tagTypes: ["Collections", "Columns"],
   endpoints: (builder) => ({
-    register: builder.mutation<void, AuthData>({
-      query: (authData) => ({
-        url: "/user/register",
-        method: "POST",
-        body: authData,
-        credentials: "include",
-      }),
-      invalidatesTags: ["Collections"],
-    }),
-    login: builder.mutation<void, AuthData>({
-      query: (authData) => ({
-        url: "/user/login",
-        method: "POST",
-        body: authData,
-        credentials: "include",
-      }),
-      invalidatesTags: ["Collections"],
-    }),
-    verify: builder.mutation<void, string>({
-      query: (id) => ({
-        url: "/user/verify",
-        method: "POST",
-        body: { id },
-        credentials: "include",
-      }),
-      invalidatesTags: ["Collections"],
-    }),
     newCollection: builder.mutation<void, string>({
       query: (name) => ({
         url: "/collection/new",
