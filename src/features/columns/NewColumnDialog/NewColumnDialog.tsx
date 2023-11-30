@@ -14,6 +14,11 @@ function NewColumnDialog({ collectionId }: NewColumnDialogProps) {
   const [createColumn, { isError, error }] = api.useCreateColumnMutation();
   const [name, setName] = useState("");
   useError(isError, error);
+
+  const handleClick = () => {
+    createColumn({ name, id: collectionId });
+    setName("");
+  };
   return (
     <Dialog id="new-column">
       <Dialog.Trigger>
@@ -33,11 +38,7 @@ function NewColumnDialog({ collectionId }: NewColumnDialogProps) {
               <SecondaryButton>Отмена</SecondaryButton>
             </Dialog.Close>
             <Dialog.Close>
-              <PrimaryButton
-                onClick={() => createColumn({ name, id: collectionId })}
-              >
-                Добавить
-              </PrimaryButton>
+              <PrimaryButton onClick={handleClick}>Добавить</PrimaryButton>
             </Dialog.Close>
           </div>
         </div>

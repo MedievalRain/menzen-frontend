@@ -11,6 +11,11 @@ function NewTableDialog() {
   const [newTable, { isError, error }] = api.useNewTableMutation();
   const [name, setName] = useState("");
   useError(isError, error);
+  const handleClick = () => {
+    newTable(name);
+    setName("");
+  };
+
   return (
     <div className={styles.wrapper}>
       <Dialog id="new-table">
@@ -33,9 +38,7 @@ function NewTableDialog() {
                 <SecondaryButton>Отмена</SecondaryButton>
               </Dialog.Close>
               <Dialog.Close>
-                <PrimaryButton onClick={() => newTable(name)}>
-                  Создать
-                </PrimaryButton>
+                <PrimaryButton onClick={handleClick}>Создать</PrimaryButton>
               </Dialog.Close>
             </div>
           </div>
