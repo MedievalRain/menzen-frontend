@@ -3,6 +3,7 @@ import { useCollectionName } from "../../../hooks/useCollectionName";
 import Dialog from "../../../ui/Dialog/Dialog";
 import PrimaryButton from "../../../ui/PrimaryButton/PrimaryButton";
 import ColumnDialogItem from "../ColumnDialogItem/ColumnDialogItem";
+import NewColumnDialog from "../NewColumnDialog/NewColumnDialog";
 import styles from "./ColumnsDialog.module.scss";
 interface ColumnsDialogProps {
   collectionId: string;
@@ -19,6 +20,7 @@ function ColumnsDialog({ collectionId }: ColumnsDialogProps) {
       <Dialog.Window>
         <div className={styles.window}>
           <h2 className={styles.title}>{collectionName}</h2>
+          <NewColumnDialog collectionId={collectionId} />
           <ul className={styles.columns}>
             {columns?.map((column) => (
               <ColumnDialogItem

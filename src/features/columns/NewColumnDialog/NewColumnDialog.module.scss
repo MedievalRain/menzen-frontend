@@ -1,0 +1,19 @@
+.window {
+  border-radius: 0.375rem;
+  border: 1px solid var(--secondary-color);
+  padding: 0.5rem;
+  box-shadow: rgba(0, 0, 0, 0.35) 0px 1px 5px;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  background-color: var(--background-color);
+}
+
+.buttons {
+  display: flex;
+  justify-content: space-between;
+}
+
+.trigger {
+  margin-left: auto;
+}
