@@ -27,3 +27,7 @@ export interface RenameColumnData {
   columnId: string;
   collectionId: string;
 }
+export interface DeleteColumnData {
+  columnId: string;
+  collectionId: string;
+}

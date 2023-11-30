@@ -2,6 +2,7 @@ import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
 import {
   AuthData,
   Column,
+  DeleteColumnData,
   NewColumnData,
   RenameColumnData,
   RenameTableData,
@@ -100,6 +101,15 @@ export const api = createApi({
         url: "/column",
         method: "POST",
         body: data,
+        credentials: "include",
+      }),
+      invalidatesTags: ["Columns"],
+    }),
+    deleteColumn: builder.mutation<void, DeleteColumnData>({
+      query: (data) => ({
+        url: "/column",
+        method: "DELETE",
+        params: data,
         credentials: "include",
       }),
       invalidatesTags: ["Columns"],
