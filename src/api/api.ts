@@ -96,6 +96,8 @@ export const api = createApi({
         credentials: "include",
       }),
       providesTags: ["Columns"],
+      transformResponse: (response: Column[]) =>
+        response.sort((a, b) => a.ordering - b.ordering),
     }),
     renameColumn: builder.mutation<void, RenameColumnData>({
       query: (data) => ({
