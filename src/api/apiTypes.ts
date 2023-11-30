@@ -38,3 +38,8 @@ export interface ChangeColumnStatusData {
   columnId: string;
   collectionId: string;
 }
+export interface ChangeColumnOrderData {
+  direction: "up" | "down";
+  columnId: string;
+  collectionId: string;
+}

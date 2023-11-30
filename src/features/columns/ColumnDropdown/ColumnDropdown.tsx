@@ -1,5 +1,6 @@
 import { api } from "../../../api/api";
 import { Column } from "../../../api/apiTypes";
+import { useError } from "../../../hooks/useError";
 import Dropdown from "../../../ui/Dropdown";
 import DotsIcon from "../../../ui/icons/DotsIcon";
 import DeleteColumnDialog from "../DeleteColumnDialog/DeleteColumnDialog";
@@ -12,6 +13,8 @@ interface ColumnDropdownProps {
 
 function ColumnDropdown({ column, collectionId }: ColumnDropdownProps) {
   const { data: columns } = api.useGetColumnsQuery(collectionId);
+  const [changeOrder, { isError, error }] = api.useChangeColumnOrderMutation();
+  useError(isError, error);
   return (
     <Dropdown id="column-dropdown">
       <div className={styles.wrapper}>
@@ -27,12 +30,34 @@ function ColumnDropdown({ column, collectionId }: ColumnDropdownProps) {
             </Dropdown.Item>
             {columns && columns[0].id != column.id && (
               <Dropdown.Item>
-                <button className={styles.item}>Вверх</button>
+                <button
+                  onClick={() =>
+                    changeOrder({
+                      collectionId,
+                      columnId: column.id,
+                      direction: "up",
+                    })
+                  }
+                  className={styles.item}
+                >
+                  Вверх
+                </button>
               </Dropdown.Item>
             )}
             {columns && columns.at(-1).id != column.id && (
               <Dropdown.Item>
-                <button className={styles.item}>Вниз</button>
+                <button
+                  onClick={() =>
+                    changeOrder({
+                      collectionId,
+                      columnId: column.id,
+                      direction: "down",
+                    })
+                  }
+                  className={styles.item}
+                >
+                  Вниз
+                </button>
               </Dropdown.Item>
             )}
             <Dropdown.Item>

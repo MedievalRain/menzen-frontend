@@ -1,6 +1,7 @@
 import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
 import {
   AuthData,
+  ChangeColumnOrderData,
   ChangeColumnStatusData,
   Column,
   DeleteColumnData,
@@ -111,6 +112,15 @@ export const api = createApi({
     changeColumnStatus: builder.mutation<void, ChangeColumnStatusData>({
       query: (data) => ({
         url: "/column/status",
+        method: "POST",
+        body: data,
+        credentials: "include",
+      }),
+      invalidatesTags: ["Columns"],
+    }),
+    changeColumnOrder: builder.mutation<void, ChangeColumnOrderData>({
+      query: (data) => ({
+        url: "/column/order",
         method: "POST",
         body: data,
         credentials: "include",
