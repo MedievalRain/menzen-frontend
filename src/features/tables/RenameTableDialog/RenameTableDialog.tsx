@@ -7,6 +7,7 @@ import PrimaryButton from "../../../ui/PrimaryButton/PrimaryButton";
 import SecondaryButton from "../../../ui/SecondaryButton/SecondaryButton";
 import styles from "./RenameTableDialog.module.scss";
 import { Table } from "../../../api/apiTypes";
+import StyledDropdownItem from "../../../ui/StyledDropdownItem/StyledDropdownItem";
 interface RenameTableDialogProps {
   table: Table;
 }
@@ -19,7 +20,7 @@ function RenameTableDialog({ table }: RenameTableDialogProps) {
     <div className={styles.wrapper}>
       <Dialog id="rename-table">
         <Dialog.Trigger>
-          <button className={styles.trigger}>Переименовать</button>
+          <StyledDropdownItem>Переименовать</StyledDropdownItem>
         </Dialog.Trigger>
         <Dialog.Window>
           <div className={styles.window}>

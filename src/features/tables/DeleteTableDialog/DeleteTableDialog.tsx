@@ -4,6 +4,7 @@ import { useError } from "../../../hooks/useError";
 import Dialog from "../../../ui/Dialog/Dialog";
 import PrimaryButton from "../../../ui/PrimaryButton/PrimaryButton";
 import SecondaryButton from "../../../ui/SecondaryButton/SecondaryButton";
+import StyledDropdownItem from "../../../ui/StyledDropdownItem/StyledDropdownItem";
 import styles from "./DeleteTableDialog.module.scss";
 interface DeleteTableDialogProps {
   table: Table;
@@ -15,7 +16,7 @@ function DeleteTableDialog({ table }: DeleteTableDialogProps) {
   return (
     <Dialog id="delete-table">
       <Dialog.Trigger>
-        <button className={styles.trigger}>Удалить</button>
+        <StyledDropdownItem>Удалить</StyledDropdownItem>
       </Dialog.Trigger>
       <Dialog.Window>
         <div className={styles.window}>

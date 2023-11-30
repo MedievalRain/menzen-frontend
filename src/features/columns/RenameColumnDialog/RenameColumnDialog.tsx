@@ -7,6 +7,7 @@ import Input from "../../../ui/Input/Input";
 import PrimaryButton from "../../../ui/PrimaryButton/PrimaryButton";
 import SecondaryButton from "../../../ui/SecondaryButton/SecondaryButton";
 import styles from "./RenameColumnDialog.module.scss";
+import StyledDropdownItem from "../../../ui/StyledDropdownItem/StyledDropdownItem";
 interface RenameColumnDialogProps {
   column: Column;
   collectionId: string;
@@ -20,7 +21,7 @@ function RenameColumnDialog({ column, collectionId }: RenameColumnDialogProps) {
     <div className={styles.wrapper}>
       <Dialog id="rename-column">
         <Dialog.Trigger>
-          <button className={styles.trigger}>Переименовать</button>
+          <StyledDropdownItem>Переименовать</StyledDropdownItem>
         </Dialog.Trigger>
         <Dialog.Window>
           <div className={styles.window}>
