@@ -31,3 +31,8 @@ export interface DeleteColumnData {
   columnId: string;
   collectionId: string;
 }
+export interface ChangeColumnStatusData {
+  enabled: boolean;
+  columnId: string;
+  collectionId: string;
+}
