@@ -1,7 +1,13 @@
-.wrapper {
+.window {
+  border-radius: 0.375rem;
+  border: 1px solid var(--secondary-color);
+  border-radius: 0.375rem;
+  padding: 0.5rem;
+  box-shadow: rgba(0, 0, 0, 0.35) 0px 1px 5px;
   display: flex;
   flex-direction: column;
-  gap: 2rem;
+  gap: 1rem;
+  background-color: var(--background-color);
 }
 
 .title {
@@ -23,4 +29,8 @@
 }
 
 .input {
+}
+.buttons {
+  display: flex;
+  justify-content: space-between;
 }
