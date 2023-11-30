@@ -30,6 +30,11 @@ function ColumnsDialog({ collectionId }: ColumnsDialogProps) {
               />
             ))}
           </ul>
+          <Dialog.Close>
+            <PrimaryButton className={styles["close-button"]}>
+              Готово
+            </PrimaryButton>
+          </Dialog.Close>
         </div>
       </Dialog.Window>
     </Dialog>
