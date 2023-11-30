@@ -16,9 +16,11 @@ function CollectionHead({ collectionId }: CollectionHeadProps) {
             <Loader />
           </th>
         )}
-        {columns?.map((column) => (
-          <CollectionHeadItem key={column.id} column={column} />
-        ))}
+        {columns
+          ?.filter((column) => column.enabled)
+          .map((column) => (
+            <CollectionHeadItem key={column.id} column={column} />
+          ))}
       </tr>
     </thead>
   );
