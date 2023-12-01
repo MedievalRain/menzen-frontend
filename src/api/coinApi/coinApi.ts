@@ -27,7 +27,7 @@ export const coinApi = createApi({
       }),
       providesTags: ["Coins"],
     }),
-    getCoin: builder.query<Coin[], string>({
+    getCoin: builder.query<Coin, string>({
       query: (coinId) => ({
         url: "/coin",
         method: "GET",
