@@ -11,3 +11,9 @@ export interface NewCoinData {
 export interface NewCoinResponse {
   id: string;
 }
+
+export interface Coin {
+  id: string;
+  createdAt: Date;
+  values: CoinValue[];
+}
