@@ -1,3 +1,4 @@
+import { useNavigate } from "react-router-dom";
 import { Coin } from "../../../api/coinApi/coinApiTypes";
 import styles from "./CollectionTableRow.module.scss";
 interface CollectionTableRowProps {
@@ -5,10 +6,15 @@ interface CollectionTableRowProps {
 }
 
 function CollectionTableRow({ coin }: CollectionTableRowProps) {
+  const navigate = useNavigate();
   return (
-    <tr className={styles.row}>
+    <tr role="link" className={styles.row}>
       {coin.values.map((value) => (
-        <td className={styles.cell} key={value.columnId}>
+        <td
+          className={styles.cell}
+          onClick={() => navigate(`coin/${coin.id}`)}
+          key={value.columnId}
+        >
           {value.value || "-"}
         </td>
       ))}

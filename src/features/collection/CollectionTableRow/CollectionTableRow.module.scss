@@ -1,3 +1,10 @@
 .cell {
   padding: 0.5rem 0;
 }
+
+.row {
+  cursor: pointer;
+  &:hover {
+    background-color: var(--secondary-color);
+  }
+}
