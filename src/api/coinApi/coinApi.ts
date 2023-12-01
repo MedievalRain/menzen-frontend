@@ -6,7 +6,7 @@ export const coinApi = createApi({
   baseQuery: fetchBaseQuery({
     baseUrl: import.meta.env.VITE_BASE_API_URL,
   }),
-  tagTypes: ["Coins"],
+  tagTypes: ["Coins", "Coin"],
 
   endpoints: (builder) => ({
     newCoin: builder.mutation<NewCoinResponse, NewCoinData>({
@@ -26,6 +26,15 @@ export const coinApi = createApi({
         credentials: "include",
       }),
       providesTags: ["Coins"],
+    }),
+    getCoin: builder.query<Coin[], string>({
+      query: (coinId) => ({
+        url: "/coin",
+        method: "GET",
+        params: { coinId },
+        credentials: "include",
+      }),
+      providesTags: ["Coin"],
     }),
   }),
 });
