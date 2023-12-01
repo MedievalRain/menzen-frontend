@@ -21,14 +21,22 @@ export const useCoins = (collectionId: string) => {
     error: columnError,
     isSuccess: isColumnSuccess,
   } = columnApi.useGetColumnsQuery(collectionId);
-  const searchValues = useAppSelector((state) => state.column.columns);
-  const { id: sortingId, type: sortingType } = useAppSelector(
-    (state) => state.column.sorting
+  const { columns: searchValues, sorting } = useAppSelector(
+    (state) => state.column
   );
+  const { id: sortingId, type: sortingType } = sorting;
+
   useError(isColumnError, columnError);
   useError(isCoinError, coinError);
   useEffect(() => {
-    if (isCoinSuccess && isColumnSuccess && coins && columns) {
+    if (
+      isCoinSuccess &&
+      isColumnSuccess &&
+      !isCoinFetching &&
+      !isCoinFetching &&
+      coins &&
+      columns
+    ) {
       setSortedCoins(() => {
         const enabledColums = columns.filter((column) => column.enabled);
         const filteredCoins: Coin[] = coins.reduce((acc, coin) => {
