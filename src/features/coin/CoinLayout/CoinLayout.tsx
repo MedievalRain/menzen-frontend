@@ -2,6 +2,7 @@ import { useCoin } from "../../../hooks/useCoin";
 import Loader from "../../../ui/Loader/Loader";
 import styles from "./CoinLayout.module.scss";
 import CoinValuesList from "../CoinValuesList/CoinValuesList";
+import CoinDropdown from "../CoinDropdown/CoinDropdown";
 interface CoinLayoutProps {
   coinId: string;
   collectionId: string;
@@ -14,6 +15,7 @@ function CoinLayout({ coinId, collectionId }: CoinLayoutProps) {
 
   return (
     <div className={styles.wrapper}>
+      <CoinDropdown coin={coin} />
       <CoinValuesList coin={coin} />
     </div>
   );

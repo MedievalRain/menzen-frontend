@@ -1,0 +1,25 @@
+.trigger {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.25rem 1rem;
+}
+.list {
+  position: absolute;
+  left: 0;
+  width: calc(100% - 0.5rem);
+  top: 2.5rem;
+  background-color: var(--background-color);
+  padding: 0.25rem;
+  display: flex;
+  flex-direction: column;
+  border-radius: 0.375rem;
+  border: 1px solid var(--secondary-color);
+  gap: 0.25rem;
+  z-index: 10;
+}
+.wrapper {
+  margin: auto;
+  position: relative;
+}
