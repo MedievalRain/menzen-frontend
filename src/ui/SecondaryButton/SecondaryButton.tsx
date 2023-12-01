@@ -5,6 +5,7 @@ interface SecondaryButtonProps {
   onClick?: () => void;
   type?: "button" | "submit" | "reset" | undefined;
   disabled?: boolean;
+  className?: string;
 }
 
 function SecondaryButton({
@@ -12,12 +13,13 @@ function SecondaryButton({
   children,
   type,
   disabled,
+  className,
 }: SecondaryButtonProps) {
   return (
     <button
       type={type}
       disabled={disabled}
-      className={styles.button}
+      className={`${styles.button} ${className}`}
       onClick={onClick}
     >
       {children}
