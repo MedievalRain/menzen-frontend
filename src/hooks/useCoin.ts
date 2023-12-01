@@ -23,7 +23,7 @@ export const useCoin = (coinId: string, collectionId: string) => {
         const value =
           coin.values.find((value) => value.columnId === column.id)?.value ||
           "";
-        return { name: column.name, value };
+        return { name: column.name, id: column.id, value };
       });
       setFormattedCoin({ id: coinId, values: formattedValues });
     }
