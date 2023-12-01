@@ -2,9 +2,11 @@ import { PayloadAction, createSlice } from "@reduxjs/toolkit";
 
 export type ColumnsState = {
   columns: { [key: string]: string };
+  sortColumnId: string | undefined;
 };
 const initialState: ColumnsState = {
   columns: {},
+  sortColumnId: undefined,
 };
 
 interface SearchAction {
@@ -18,6 +20,9 @@ const columnSlice = createSlice({
   reducers: {
     search: (state, action: PayloadAction<SearchAction>) => {
       state.columns[action.payload.columnId] = action.payload.value;
+    },
+    sort: (state, action: PayloadAction<string | undefined>) => {
+      state.sortColumnId = action.payload;
     },
   },
 });
