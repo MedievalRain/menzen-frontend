@@ -33,7 +33,11 @@ export const useCoins = (collectionId: string) => {
           const isUnfiltered = enabledColums.every((column) => {
             const value =
               coin.values.find((v) => v.columnId === column.id)?.value || "";
-            if (value.startsWith(searchValues[column.id] || "")) {
+            if (
+              value
+                .toLowerCase()
+                .startsWith((searchValues[column.id] || "").toLowerCase())
+            ) {
               values.push({ columnId: column.id, value });
               return true;
             } else {
