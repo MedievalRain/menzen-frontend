@@ -20,7 +20,7 @@ export const coinApi = createApi({
     }),
     getCoins: builder.query<Coin[], string>({
       query: (collectionId) => ({
-        url: "/coin",
+        url: "/coin/collection",
         method: "GET",
         params: { collectionId },
         credentials: "include",
