@@ -4,6 +4,7 @@ import { Coin, CoinValue } from "../api/coinApi/coinApiTypes";
 import { useError } from "./useError";
 import { columnApi } from "../api/columnApi/columnApi";
 import { useAppSelector } from "./storeHooks";
+import { SortingType } from "../features/columns/columnSlice";
 const collator = new Intl.Collator("en");
 export const useCoins = (collectionId: string) => {
   const [sortedCoins, setSortedCoins] = useState<Coin[]>([]);
@@ -63,28 +64,7 @@ export const useCoins = (collectionId: string) => {
 
           return acc;
         }, [] as Coin[]);
-        switch (sortingType) {
-          case undefined:
-            return filteredCoins;
-          case "ASC":
-            return filteredCoins.sort((a, b) =>
-              collator.compare(
-                a.values.find((value) => value.columnId === sortingId)?.value ||
-                  "",
-                b.values.find((value) => value.columnId === sortingId)?.value ||
-                  ""
-              )
-            );
-          case "DESC":
-            return filteredCoins.sort((a, b) =>
-              collator.compare(
-                b.values.find((value) => value.columnId === sortingId)?.value ||
-                  "",
-                a.values.find((value) => value.columnId === sortingId)?.value ||
-                  ""
-              )
-            );
-        }
+        return sortCoins(filteredCoins, sortingId, sortingType);
       });
     }
   }, [
@@ -98,4 +78,29 @@ export const useCoins = (collectionId: string) => {
   ]);
 
   return { sortedCoins, isFetching: isCoinFetching || isColumnFetching };
+};
+
+const sortCoins = (
+  coins: Coin[],
+  sortingId: string | undefined,
+  sortingType: SortingType
+): Coin[] => {
+  switch (sortingType) {
+    case undefined:
+      return coins;
+    case "ASC":
+      return coins.sort((a, b) =>
+        collator.compare(
+          a.values.find((value) => value.columnId === sortingId)?.value || "",
+          b.values.find((value) => value.columnId === sortingId)?.value || ""
+        )
+      );
+    case "DESC":
+      return coins.sort((a, b) =>
+        collator.compare(
+          b.values.find((value) => value.columnId === sortingId)?.value || "",
+          a.values.find((value) => value.columnId === sortingId)?.value || ""
+        )
+      );
+  }
 };

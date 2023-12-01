@@ -1,5 +1,6 @@
 import { PayloadAction, createSlice } from "@reduxjs/toolkit";
 
+export type SortingType = "ASC" | "DESC" | undefined;
 type NotSorted = { id: undefined; type: undefined };
 type Sorted = { id: string; type: "ASC" | "DESC" };
 export type ColumnsState = {
