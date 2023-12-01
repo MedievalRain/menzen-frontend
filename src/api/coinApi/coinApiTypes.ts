@@ -17,3 +17,8 @@ export interface Coin {
   createdAt: Date;
   values: CoinValue[];
 }
+
+export interface EditCoinFieldsData {
+  coinId: string;
+  values: CoinValue[];
+}

@@ -1,5 +1,10 @@
 import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
-import { Coin, NewCoinData, NewCoinResponse } from "./coinApiTypes";
+import {
+  Coin,
+  EditCoinFieldsData,
+  NewCoinData,
+  NewCoinResponse,
+} from "./coinApiTypes";
 
 export const coinApi = createApi({
   reducerPath: "coinApi",
@@ -35,6 +40,15 @@ export const coinApi = createApi({
         credentials: "include",
       }),
       providesTags: ["Coin"],
+    }),
+    editCoin: builder.mutation<void, EditCoinFieldsData>({
+      query: (data) => ({
+        url: "/coin",
+        method: "POST",
+        body: data,
+        credentials: "include",
+      }),
+      invalidatesTags: ["Coin", "Coins"],
     }),
   }),
 });
