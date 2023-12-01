@@ -5,6 +5,7 @@ import { useError } from "./useError";
 import { columnApi } from "../api/columnApi/columnApi";
 import { useAppSelector } from "./storeHooks";
 import { SortingType } from "../features/columns/columnSlice";
+import { Column } from "../api/columnApi/columnApiTypes";
 const collator = new Intl.Collator("en");
 export const useCoins = (collectionId: string) => {
   const [sortedCoins, setSortedCoins] = useState<Coin[]>([]);
@@ -40,30 +41,11 @@ export const useCoins = (collectionId: string) => {
     ) {
       setSortedCoins(() => {
         const enabledColums = columns.filter((column) => column.enabled);
-        const filteredCoins: Coin[] = coins.reduce((acc, coin) => {
-          const values: CoinValue[] = [];
-          const isUnfiltered = enabledColums.every((column) => {
-            const value =
-              coin.values.find((v) => v.columnId === column.id)?.value || "";
-            if (
-              value
-                .toLowerCase()
-                .startsWith((searchValues[column.id] || "").toLowerCase())
-            ) {
-              values.push({ columnId: column.id, value });
-              return true;
-            } else {
-              return false;
-            }
-          });
-          if (isUnfiltered)
-            acc.push({
-              ...coin,
-              values,
-            });
-
-          return acc;
-        }, [] as Coin[]);
+        const filteredCoins: Coin[] = filterCoins(
+          coins,
+          enabledColums,
+          searchValues
+        );
         return sortCoins(filteredCoins, sortingId, sortingType);
       });
     }
@@ -78,6 +60,37 @@ export const useCoins = (collectionId: string) => {
   ]);
 
   return { sortedCoins, isFetching: isCoinFetching || isColumnFetching };
+};
+
+const filterCoins = (
+  coins: Coin[],
+  columns: Column[],
+  searchValues: { [key: string]: string }
+): Coin[] => {
+  return coins.reduce((acc, coin) => {
+    const values: CoinValue[] = [];
+    const isUnfiltered = columns.every((column) => {
+      const value =
+        coin.values.find((v) => v.columnId === column.id)?.value || "";
+      if (
+        value
+          .toLowerCase()
+          .startsWith((searchValues[column.id] || "").toLowerCase())
+      ) {
+        values.push({ columnId: column.id, value });
+        return true;
+      } else {
+        return false;
+      }
+    });
+    if (isUnfiltered)
+      acc.push({
+        ...coin,
+        values,
+      });
+
+    return acc;
+  }, [] as Coin[]);
 };
 
 const sortCoins = (
