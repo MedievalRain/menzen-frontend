@@ -19,7 +19,8 @@ type ErrorTypes =
   | "COLLECTION_NOT_EXISTS"
   | "COLUMN_EXISTS"
   | "COLUMN_NOT_EXIST"
-  | "ORDERING_ERROR";
+  | "ORDERING_ERROR"
+  | "COIN_NOT_EXISTS";
 
 interface ErrorResponse {
   error: ErrorTypes;
@@ -70,6 +71,9 @@ export const useError = (
             break;
           case "ORDERING_ERROR":
             toast.error("Неверный порядок полей");
+            break;
+          case "COIN_NOT_EXISTS":
+            toast.error("Монета не существует");
             break;
 
           case "UNAUTHORIZED":
