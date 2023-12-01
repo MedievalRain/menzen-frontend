@@ -4,7 +4,7 @@ import { Coin, CoinValue } from "../api/coinApi/coinApiTypes";
 import { useError } from "./useError";
 import { columnApi } from "../api/columnApi/columnApi";
 import { useAppSelector } from "./storeHooks";
-
+const collator = new Intl.Collator("en");
 export const useCoins = (collectionId: string) => {
   const [sortedCoins, setSortedCoins] = useState<Coin[]>([]);
   const {
@@ -22,13 +22,16 @@ export const useCoins = (collectionId: string) => {
     isSuccess: isColumnSuccess,
   } = columnApi.useGetColumnsQuery(collectionId);
   const searchValues = useAppSelector((state) => state.column.columns);
+  const { id: sortingId, type: sortingType } = useAppSelector(
+    (state) => state.column.sorting
+  );
   useError(isColumnError, columnError);
   useError(isCoinError, coinError);
   useEffect(() => {
     if (isCoinSuccess && isColumnSuccess && coins && columns) {
       setSortedCoins(() => {
         const enabledColums = columns.filter((column) => column.enabled);
-        return coins.reduce((acc, coin) => {
+        const filteredCoins = coins.reduce((acc, coin) => {
           const values: CoinValue[] = [];
           const isUnfiltered = enabledColums.every((column) => {
             const value =
@@ -52,6 +55,28 @@ export const useCoins = (collectionId: string) => {
 
           return acc;
         }, [] as Coin[]);
+        switch (sortingType) {
+          case undefined:
+            return filteredCoins;
+          case "ASC":
+            return filteredCoins.sort((a, b) =>
+              collator.compare(
+                a.values.find((value) => value.columnId === sortingId)?.value ||
+                  "",
+                b.values.find((value) => value.columnId === sortingId)?.value ||
+                  ""
+              )
+            );
+          case "DESC":
+            return filteredCoins.sort((a, b) =>
+              collator.compare(
+                b.values.find((value) => value.columnId === sortingId)?.value ||
+                  "",
+                a.values.find((value) => value.columnId === sortingId)?.value ||
+                  ""
+              )
+            );
+        }
       });
     }
   }, [
@@ -60,6 +85,8 @@ export const useCoins = (collectionId: string) => {
     isCoinFetching,
     isColumnFetching,
     searchValues,
+    sortingId,
+    sortingType,
   ]);
 
   return { sortedCoins, isFetching: isCoinFetching || isColumnFetching };
