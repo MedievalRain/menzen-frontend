@@ -31,7 +31,7 @@ export const useCoins = (collectionId: string) => {
     if (isCoinSuccess && isColumnSuccess && coins && columns) {
       setSortedCoins(() => {
         const enabledColums = columns.filter((column) => column.enabled);
-        const filteredCoins = coins.reduce((acc, coin) => {
+        const filteredCoins: Coin[] = coins.reduce((acc, coin) => {
           const values: CoinValue[] = [];
           const isUnfiltered = enabledColums.every((column) => {
             const value =
