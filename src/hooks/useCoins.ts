@@ -8,7 +8,7 @@ export const useCoins = (collectionId: string) => {
   const [sortedCoins, setSortedCoins] = useState<Coin[]>([]);
   const {
     data: coins,
-    isFetching,
+    isFetching: isCoinFetching,
     isError: isCoinError,
     error: coinError,
     isSuccess: isCoinSuccess,
@@ -16,6 +16,7 @@ export const useCoins = (collectionId: string) => {
   const {
     data: columns,
     isError: isColumnError,
+    isFetching: isColumnFetching,
     error: columnError,
     isSuccess: isColumnSuccess,
   } = columnApi.useGetColumnsQuery(collectionId);
@@ -24,9 +25,10 @@ export const useCoins = (collectionId: string) => {
   useError(isCoinError, coinError);
   useEffect(() => {
     if (isCoinSuccess && isColumnSuccess && coins && columns) {
-      setSortedCoins(
-        coins.reduce((acc, coin) => {
-          const values: CoinValue[] = columns.map((column) => {
+      setSortedCoins(() => {
+        const enabledColums = columns.filter((column) => column.enabled);
+        return coins.reduce((acc, coin) => {
+          const values: CoinValue[] = enabledColums.map((column) => {
             const value =
               coin.values.find((v) => v.columnId === column.id)?.value || "";
             return { columnId: column.id, value };
@@ -37,10 +39,10 @@ export const useCoins = (collectionId: string) => {
             values,
           });
           return acc;
-        }, [] as Coin[])
-      );
+        }, [] as Coin[]);
+      });
     }
-  }, [isCoinSuccess, isColumnSuccess]);
+  }, [isCoinSuccess, isColumnSuccess, isCoinFetching, isColumnFetching]);
 
-  return { sortedCoins, isFetching };
+  return { sortedCoins, isFetching: isCoinFetching || isColumnFetching };
 };
