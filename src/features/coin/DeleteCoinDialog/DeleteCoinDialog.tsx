@@ -35,11 +35,11 @@ function DeleteCoinDialog({ coinId, collectionId }: DeleteCoinDialogProps) {
             <Dialog.Close>
               <SecondaryButton>Отмена</SecondaryButton>
             </Dialog.Close>
-            <Dialog.Close>
+            <Dialog.Submit>
               <PrimaryButton onClick={() => deleteCoin(coinId)}>
                 Удалить
               </PrimaryButton>
-            </Dialog.Close>
+            </Dialog.Submit>
           </div>
         </div>
       </Dialog.Window>
