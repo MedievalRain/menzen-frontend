@@ -15,15 +15,13 @@ function ImagesDialog({ coin }: ImagesDialogProps) {
       <Dialog.Trigger>
         <StyledDropdownItem>Изменить фото</StyledDropdownItem>
       </Dialog.Trigger>
-      <Dialog.Window>
-        <div className={styles.window}>
-          <h2 className={styles.title}>Изменить фото</h2>
-          <UploadImageDialog coinId={coin.id} />
-          <ImagesDialogList imageIds={coin.imageIds} coinId={coin.id} />
-          <Dialog.Close>
-            <PrimaryButton>Готово</PrimaryButton>
-          </Dialog.Close>
-        </div>
+      <Dialog.Window className={styles.window}>
+        <h2 className={styles.title}>Изменить фото</h2>
+        <UploadImageDialog coinId={coin.id} />
+        <ImagesDialogList imageIds={coin.imageIds} coinId={coin.id} />
+        <Dialog.Close>
+          <PrimaryButton>Готово</PrimaryButton>
+        </Dialog.Close>
       </Dialog.Window>
     </Dialog>
   );
