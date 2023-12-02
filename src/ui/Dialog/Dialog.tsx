@@ -10,7 +10,7 @@ import {
 import styles from "./Dialog.module.css";
 import ReactDOM from "react-dom";
 
-import { ChildrenProps, ElementProps } from "../types";
+import { ElementProps } from "../types";
 import { useCloseOutside } from "../../hooks/useCloseOutside";
 import { useAppDispatch } from "../../hooks/storeHooks";
 import { openComponent, closeComponent } from "../UIControls/uiSlice";
@@ -104,8 +104,10 @@ function Close({ children }: ElementProps) {
     onClick: handleClick,
   });
 }
-
-function Window({ children }: ChildrenProps) {
+interface WindowProps extends PropsWithChildren {
+  className?: string;
+}
+function Window({ children, className }: WindowProps) {
   const { isOpened, close, id } = useContext(DialogContext);
   const windowRef = useRef<HTMLDivElement>(null);
   useCloseOutside(windowRef, close, id);
@@ -114,7 +116,7 @@ function Window({ children }: ChildrenProps) {
       <div className={styles["outside-container"]}>
         <div
           ref={windowRef}
-          className={`${styles["window-container"]} shadow border-container`}
+          className={`${styles["window-container"]} shadow border-container ${className}`}
         >
           {children}
         </div>
