@@ -1,8 +1,8 @@
 import { FormattedCoin } from "../../../types";
 import Dropdown from "../../../ui/Dropdown";
 import SecondaryButton from "../../../ui/SecondaryButton/SecondaryButton";
-import StyledDropdownItem from "../../../ui/StyledDropdownItem/StyledDropdownItem";
 import ArrowDownIcon from "../../../ui/icons/ArrowDownIcon";
+import ImagesDialog from "../../image/ImagesDialog/ImagesDialog";
 import DeleteCoinDialog from "../DeleteCoinDialog/DeleteCoinDialog";
 import EditCoinValuesDialog from "../EditCoinValuesDialog/EditCoinValuesDialog";
 import styles from "./CoinDropdown.module.scss";
@@ -24,7 +24,7 @@ function CoinDropdown({ coin, collectionId }: CoinDropdownProps) {
         <Dropdown.List>
           <div className={styles.list}>
             <EditCoinValuesDialog coin={coin} />
-            <StyledDropdownItem>Изменить фото</StyledDropdownItem>
+            <ImagesDialog coinId={coin.id} />
             <DeleteCoinDialog coinId={coin.id} collectionId={collectionId} />
           </div>
         </Dropdown.List>
