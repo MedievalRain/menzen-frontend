@@ -17,5 +17,16 @@ export const imageApi = baseApi.injectEndpoints({
       },
       invalidatesTags: ["Coin", "Coins"],
     }),
+    deleteImage: builder.mutation<void, string>({
+      query: (imageId) => {
+        return {
+          url: "/image",
+          method: "DELETE",
+          params: { imageId },
+          credentials: "include",
+        };
+      },
+      invalidatesTags: ["Coin", "Coins"],
+    }),
   }),
 });
