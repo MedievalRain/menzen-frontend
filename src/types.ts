@@ -7,5 +7,5 @@ export interface FormattedCoinValue {
 export interface FormattedCoin {
   id: string;
   values: FormattedCoinValue[];
-  images: string[];
+  imageIds: string[];
 }
