@@ -8,7 +8,7 @@ import styles from "./NewCollectionDialog.module.scss";
 import { useError } from "../../../hooks/useError";
 import { collectionApi } from "../../../api/collectionApi/collectionApi";
 function NewCollectionDialog() {
-  const [newCollection, { isError, error }] =
+  const [newCollection, { isError, error, isSuccess }] =
     collectionApi.useNewCollectionMutation();
   const [name, setName] = useState("");
   useError(isError, error);
@@ -38,9 +38,9 @@ function NewCollectionDialog() {
               <Dialog.Close>
                 <SecondaryButton>Отмена</SecondaryButton>
               </Dialog.Close>
-              <Dialog.Close>
+              <Dialog.Submit shouldClose={isSuccess}>
                 <PrimaryButton onClick={handleClick}>Создать</PrimaryButton>
-              </Dialog.Close>
+              </Dialog.Submit>
             </div>
           </div>
         </Dialog.Window>
