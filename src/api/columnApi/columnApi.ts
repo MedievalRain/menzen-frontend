@@ -1,4 +1,3 @@
-import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
 import {
   BaseColumnData,
   ChangeColumnOrderData,
@@ -7,13 +6,9 @@ import {
   NewColumnData,
   RenameColumnData,
 } from "./columnApiTypes";
+import { baseApi } from "../baseApi";
 
-export const columnApi = createApi({
-  reducerPath: "columnApi",
-  baseQuery: fetchBaseQuery({
-    baseUrl: import.meta.env.VITE_BASE_API_URL,
-  }),
-  tagTypes: ["Columns"],
+export const columnApi = baseApi.injectEndpoints({
   endpoints: (builder) => ({
     createColumn: builder.mutation<void, NewColumnData>({
       query: (data) => ({

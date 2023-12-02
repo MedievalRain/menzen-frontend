@@ -1,4 +1,4 @@
-import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
+import { baseApi } from "../baseApi";
 import {
   Coin,
   EditCoinFieldsData,
@@ -6,13 +6,7 @@ import {
   NewCoinResponse,
 } from "./coinApiTypes";
 
-export const coinApi = createApi({
-  reducerPath: "coinApi",
-  baseQuery: fetchBaseQuery({
-    baseUrl: import.meta.env.VITE_BASE_API_URL,
-  }),
-  tagTypes: ["Coins", "Coin"],
-
+export const coinApi = baseApi.injectEndpoints({
   endpoints: (builder) => ({
     newCoin: builder.mutation<NewCoinResponse, NewCoinData>({
       query: (data) => ({

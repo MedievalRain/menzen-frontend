@@ -1,12 +1,7 @@
-import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
+import { baseApi } from "../baseApi";
 import { RenameCollectionData, Collection } from "./collectionApiTypes";
 
-export const collectionApi = createApi({
-  reducerPath: "collectionApi",
-  baseQuery: fetchBaseQuery({
-    baseUrl: import.meta.env.VITE_BASE_API_URL,
-  }),
-  tagTypes: ["Collections"],
+export const collectionApi = baseApi.injectEndpoints({
   endpoints: (builder) => ({
     newCollection: builder.mutation<void, string>({
       query: (name) => ({

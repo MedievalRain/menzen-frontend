@@ -1,18 +1,13 @@
-import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
 import { UploadFileData } from "./imageApiTypes";
+import { baseApi } from "../baseApi";
 
-export const imageApi = createApi({
-  reducerPath: "imageApi",
-  baseQuery: fetchBaseQuery({
-    baseUrl: import.meta.env.VITE_BASE_API_URL,
-  }),
+export const imageApi = baseApi.injectEndpoints({
   endpoints: (builder) => ({
     uploadImage: builder.mutation<void, UploadFileData>({
       query: (data) => {
         const formData = new FormData();
         formData.append("coinId", data.coinId);
         formData.append("file", data.file);
-
         return {
           url: "/image/upload",
           method: "POST",
@@ -20,6 +15,7 @@ export const imageApi = createApi({
           credentials: "include",
         };
       },
+      invalidatesTags: ["Coin", "Coins"],
     }),
   }),
 });
