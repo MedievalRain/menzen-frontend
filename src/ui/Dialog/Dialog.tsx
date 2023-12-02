@@ -5,6 +5,7 @@ import {
   cloneElement,
   useRef,
   PropsWithChildren,
+  useEffect,
 } from "react";
 import styles from "./Dialog.module.css";
 import ReactDOM from "react-dom";
@@ -62,15 +63,45 @@ function Trigger({ children }: ElementProps) {
   });
 }
 
+interface SubmitProps extends ElementProps {
+  shouldClose?: boolean;
+}
+
+function Submit({ children, shouldClose }: SubmitProps) {
+  const { close } = useContext(DialogContext);
+  useEffect(() => {
+    if (shouldClose) {
+      close();
+    }
+  }, [shouldClose, close]);
+  const handleClick = async (event: React.MouseEvent<HTMLElement>) => {
+    if (typeof children.props.onClick === "function") {
+      const result = children.props.onClick(event);
+      if (result instanceof Promise) {
+        await result;
+      }
+      if (shouldClose === undefined) {
+        close();
+      }
+    }
+  };
+
+  return cloneElement(children, {
+    onClick: handleClick,
+  });
+}
+
 function Close({ children }: ElementProps) {
   const { close } = useContext(DialogContext);
+  const handleClick = async (event: React.MouseEvent<HTMLElement>) => {
+    if (typeof children.props.onClick === "function") {
+      children.props.onClick(event);
+    }
+    close();
+  };
+
   return cloneElement(children, {
-    onClick: (event: React.MouseEvent<HTMLElement>) => {
-      if (typeof children.props.onClick === "function") {
-        children.props.onClick(event);
-      }
-      close();
-    },
+    onClick: handleClick,
   });
 }
 
@@ -95,5 +126,6 @@ function Window({ children }: ChildrenProps) {
 Dialog.Window = Window;
 Dialog.Trigger = Trigger;
 Dialog.Close = Close;
+Dialog.Submit = Submit;
 
 export default Dialog;
