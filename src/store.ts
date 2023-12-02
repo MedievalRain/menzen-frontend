@@ -6,6 +6,7 @@ import { collectionApi } from "./api/collectionApi/collectionApi";
 import { columnApi } from "./api/columnApi/columnApi";
 import { coinApi } from "./api/coinApi/coinApi";
 import columnReducer from "./features/columns/columnSlice";
+import { imageApi } from "./api/imageApi/imageApi";
 
 const store = configureStore({
   reducer: {
@@ -15,6 +16,7 @@ const store = configureStore({
     [collectionApi.reducerPath]: collectionApi.reducer,
     [columnApi.reducerPath]: columnApi.reducer,
     [coinApi.reducerPath]: coinApi.reducer,
+    [imageApi.reducerPath]: imageApi.reducer,
   },
   middleware: (getDefaultMiddleware) =>
     getDefaultMiddleware({}).concat([
@@ -22,6 +24,7 @@ const store = configureStore({
       collectionApi.middleware,
       columnApi.middleware,
       coinApi.middleware,
+      imageApi.middleware,
     ]),
 });
 
