@@ -16,6 +16,7 @@ export interface Coin {
   id: string;
   createdAt: Date;
   values: CoinValue[];
+  images: string[];
 }
 
 export interface EditCoinFieldsData {

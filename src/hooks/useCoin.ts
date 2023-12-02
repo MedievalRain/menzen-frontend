@@ -16,7 +16,6 @@ export const useCoin = (coinId: string, collectionId: string) => {
   const [formattedCoin, setFormattedCoin] = useState<FormattedCoin | null>(
     null
   );
-
   useEffect(() => {
     if (coin && !isCoinFetching && !isCoinFetching) {
       const formattedValues: FormattedCoinValue[] = columns.map((column) => {
@@ -25,7 +24,11 @@ export const useCoin = (coinId: string, collectionId: string) => {
           "";
         return { name: column.name, id: column.id, value };
       });
-      setFormattedCoin({ id: coinId, values: formattedValues });
+      setFormattedCoin({
+        id: coinId,
+        values: formattedValues,
+        images: coin.images,
+      });
     }
   }, [isCoinFetching, isColumnsFetching]);
 
