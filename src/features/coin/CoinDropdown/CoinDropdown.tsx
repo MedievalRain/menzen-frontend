@@ -24,7 +24,7 @@ function CoinDropdown({ coin, collectionId }: CoinDropdownProps) {
         <Dropdown.List>
           <div className={styles.list}>
             <EditCoinValuesDialog coin={coin} />
-            <ImagesDialog coinId={coin.id} />
+            <ImagesDialog coin={coin} />
             <DeleteCoinDialog coinId={coin.id} collectionId={collectionId} />
           </div>
         </Dropdown.List>
