@@ -50,5 +50,14 @@ export const coinApi = createApi({
       }),
       invalidatesTags: ["Coin", "Coins"],
     }),
+    deleteCoin: builder.mutation<void, string>({
+      query: (id) => ({
+        url: "/coin",
+        method: "DELETE",
+        params: { id },
+        credentials: "include",
+      }),
+      invalidatesTags: ["Coin", "Coins"],
+    }),
   }),
 });

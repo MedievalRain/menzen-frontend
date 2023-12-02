@@ -73,7 +73,7 @@ export const useError = (
             toast.error("Неверный порядок полей");
             break;
           case "COIN_NOT_EXISTS":
-            toast.error("Монета не существует");
+            navigate("..", { relative: "path" });
             break;
 
           case "UNAUTHORIZED":

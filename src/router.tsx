@@ -50,6 +50,7 @@ export const router = createBrowserRouter([
                 children: [
                   { index: true, path: "", element: <CollectionPage /> },
                   { path: "coin/:coinId", element: <CoinPage /> },
+                  { path: "coin", element: <Navigate to={".."} /> },
                 ],
               },
             ],
