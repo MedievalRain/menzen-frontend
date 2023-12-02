@@ -11,7 +11,7 @@ interface CoinLayoutProps {
 function CoinLayout({ coinId, collectionId }: CoinLayoutProps) {
   const { formattedCoin: coin, isFetching } = useCoin(coinId, collectionId);
 
-  if (isFetching || !coin) return <Loader />;
+  if (!coin) return <Loader />;
 
   return (
     <div className={styles.wrapper}>
