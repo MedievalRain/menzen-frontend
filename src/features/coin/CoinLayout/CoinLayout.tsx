@@ -10,7 +10,7 @@ interface CoinLayoutProps {
 }
 
 function CoinLayout({ coinId, collectionId }: CoinLayoutProps) {
-  const { formattedCoin: coin, isFetching } = useCoin(coinId, collectionId);
+  const { formattedCoin: coin } = useCoin(coinId, collectionId);
 
   if (!coin) return <Loader />;
 
