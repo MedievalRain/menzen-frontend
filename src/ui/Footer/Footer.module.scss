@@ -1,0 +1,15 @@
+.mailto {
+  text-decoration: underline;
+}
+.footer {
+  font-weight: 600;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 0.375rem;
+  border-top: 1px solid var(--secondary-color);
+  border-left: 1px solid var(--secondary-color);
+  border-right: 1px solid var(--secondary-color);
+  width: 100%;
+  padding: 1rem 0;
+}
