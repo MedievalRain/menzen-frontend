@@ -14,6 +14,7 @@ import { ElementProps } from "../types";
 import { useCloseOutside } from "../../hooks/useCloseOutside";
 import { useAppDispatch } from "../../hooks/storeHooks";
 import { openComponent, closeComponent } from "../UIControls/uiSlice";
+import { useCloseKey } from "../../hooks/useCloseKey";
 
 interface ContextType {
   isOpened: boolean;
@@ -111,6 +112,7 @@ function Window({ children, className }: WindowProps) {
   const { isOpened, close, id } = useContext(DialogContext);
   const windowRef = useRef<HTMLDivElement>(null);
   useCloseOutside(windowRef, close, id);
+  useCloseKey(id, close);
   if (isOpened)
     return ReactDOM.createPortal(
       <div className={styles["outside-container"]}>
