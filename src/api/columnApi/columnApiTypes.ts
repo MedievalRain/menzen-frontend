@@ -2,12 +2,14 @@ export interface NewColumnData {
   name: string;
   id: string;
 }
+export type ColumnType = "regular" | "images";
 
 export interface Column {
   name: string;
   id: string;
   ordering: number;
   enabled: boolean;
+  type: ColumnType;
 }
 
 export interface BaseColumnData {

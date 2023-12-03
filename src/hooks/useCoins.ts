@@ -1,14 +1,15 @@
 import { useEffect, useState } from "react";
 import { coinApi } from "../api/coinApi/coinApi";
-import { Coin, CoinValue } from "../api/coinApi/coinApiTypes";
+import { Coin } from "../api/coinApi/coinApiTypes";
 import { useError } from "./useError";
 import { columnApi } from "../api/columnApi/columnApi";
 import { useAppSelector } from "./storeHooks";
 import { SortingType } from "../features/columns/columnSlice";
 import { Column } from "../api/columnApi/columnApiTypes";
+import { TableCoin, TableCoinValue } from "../types";
 const collator = new Intl.Collator("en");
 export const useCoins = (collectionId: string) => {
-  const [sortedCoins, setSortedCoins] = useState<Coin[]>([]);
+  const [sortedCoins, setSortedCoins] = useState<TableCoin[]>([]);
   const {
     data: coins,
     isFetching: isCoinFetching,
@@ -41,7 +42,7 @@ export const useCoins = (collectionId: string) => {
     ) {
       setSortedCoins(() => {
         const enabledColums = columns.filter((column) => column.enabled);
-        const filteredCoins: Coin[] = filterCoins(
+        const filteredCoins: TableCoin[] = filterCoins(
           coins,
           enabledColums,
           searchValues
@@ -66,9 +67,9 @@ const filterCoins = (
   coins: Coin[],
   columns: Column[],
   searchValues: { [key: string]: string }
-): Coin[] => {
+): TableCoin[] => {
   return coins.reduce((acc, coin) => {
-    const values: CoinValue[] = [];
+    const values: TableCoinValue[] = [];
     const isUnfiltered = columns.every((column) => {
       const value =
         coin.values.find((v) => v.columnId === column.id)?.value || "";
@@ -77,7 +78,7 @@ const filterCoins = (
           .toLowerCase()
           .startsWith((searchValues[column.id] || "").toLowerCase())
       ) {
-        values.push({ columnId: column.id, value });
+        values.push({ columnId: column.id, value, type: column.type });
         return true;
       } else {
         return false;
@@ -90,14 +91,14 @@ const filterCoins = (
       });
 
     return acc;
-  }, [] as Coin[]);
+  }, [] as TableCoin[]);
 };
 
 const sortCoins = (
-  coins: Coin[],
+  coins: TableCoin[],
   sortingId: string | undefined,
   sortingType: SortingType
-): Coin[] => {
+): TableCoin[] => {
   switch (sortingType) {
     case undefined:
       return coins;
