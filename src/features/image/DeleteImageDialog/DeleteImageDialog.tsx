@@ -16,12 +16,7 @@ function DeleteImageDialog({ imageId }: DeleteImageDialogProps) {
   return (
     <Dialog id="delete-image-dialog">
       <Dialog.Trigger>
-        <button key={imageId} className={styles.trigger}>
-          <img
-            className={styles.image}
-            src={`https://files.medievalrain.net/${imageId}_thumbnail.webp`}
-          />
-        </button>
+        <PrimaryButton>Удалить</PrimaryButton>
       </Dialog.Trigger>
       <Dialog.Window className={styles.window}>
         <p>Удалить фото?</p>

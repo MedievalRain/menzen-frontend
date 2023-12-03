@@ -2,7 +2,6 @@ import { FormattedCoin } from "../../../types";
 import Dropdown from "../../../ui/Dropdown";
 import SecondaryButton from "../../../ui/SecondaryButton/SecondaryButton";
 import ArrowDownIcon from "../../../ui/icons/ArrowDownIcon";
-import ImagesDialog from "../../image/ImagesDialog/ImagesDialog";
 import DeleteCoinDialog from "../DeleteCoinDialog/DeleteCoinDialog";
 import EditCoinValuesDialog from "../EditCoinValuesDialog/EditCoinValuesDialog";
 import styles from "./CoinDropdown.module.scss";
@@ -24,7 +23,6 @@ function CoinDropdown({ coin, collectionId }: CoinDropdownProps) {
         <Dropdown.List>
           <div className={styles.list}>
             <EditCoinValuesDialog coin={coin} />
-            <ImagesDialog coin={coin} />
             <DeleteCoinDialog coinId={coin.id} collectionId={collectionId} />
           </div>
         </Dropdown.List>

@@ -1,3 +1,4 @@
+import ImageFullDialog from "../ImageFullDialog/ImageFullDialog";
 import styles from "./ImagesGallery.module.scss";
 
 interface ImagesGalleryProps {
@@ -8,12 +9,7 @@ function ImagesGallery({ imageIds }: ImagesGalleryProps) {
   return (
     <div className={styles.grid}>
       {imageIds.map((id) => (
-        <button key={id}>
-          <img
-            className={styles.image}
-            src={`https://files.medievalrain.net/${id}.webp`}
-          />
-        </button>
+        <ImageFullDialog key={id} imageId={id} />
       ))}
     </div>
   );
