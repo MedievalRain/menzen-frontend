@@ -1,3 +1,4 @@
+import { useEffect } from "react";
 import { useAppDispatch, useAppSelector } from "../../../hooks/storeHooks";
 import ArrowLeftIcon from "../../../ui/icons/ArrowLeftIcon";
 import ArrowRightIcon from "../../../ui/icons/ArrowRightIcon";
@@ -14,6 +15,11 @@ function PaginationControls() {
   } = useAppSelector((state) => state.collection);
   const dispatch = useAppDispatch();
   const maxPage = getMaxPage(coins.length, pageSize);
+
+  useEffect(() => {
+    dispatch(setPage(1));
+  }, [coins]);
+
   return (
     <div className={styles.wrapper}>
       <button
