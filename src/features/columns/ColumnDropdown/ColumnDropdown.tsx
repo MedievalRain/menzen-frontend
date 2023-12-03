@@ -60,9 +60,14 @@ function ColumnDropdown({ column, collectionId }: ColumnDropdownProps) {
                 </StyledDropdownItem>
               </Dropdown.Item>
             )}
-            <Dropdown.Item>
-              <DeleteColumnDialog collectionId={collectionId} column={column} />
-            </Dropdown.Item>
+            {column.type === "regular" && (
+              <Dropdown.Item>
+                <DeleteColumnDialog
+                  collectionId={collectionId}
+                  column={column}
+                />
+              </Dropdown.Item>
+            )}
           </div>
         </Dropdown.List>
       </div>
