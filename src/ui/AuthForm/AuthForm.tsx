@@ -26,28 +26,31 @@ function AuthForm({
   linkTo,
 }: AuthFormProps) {
   return (
-    <div className={`${styles.wrapper} shadow border-container`}>
-      <form className={styles["form-container"]} onSubmit={handleSubmit}>
-        <Input
-          value={email}
-          onChange={(e) => setEmail(e.target.value)}
-          type="text"
-          placeholder="Email..."
-          name="email"
-        />
-        <Input
-          value={password}
-          onChange={(e) => setPassword(e.target.value)}
-          type="password"
-          placeholder="Пароль..."
-          name="password"
-        />
-        <PrimaryButton type="submit">{submitText}</PrimaryButton>
-      </form>
-      <Link className={styles.link} to={linkTo}>
-        {linkText}
-      </Link>
-    </div>
+    <>
+      <h1 className={styles.logo}>menzen</h1>
+      <div className={`${styles.wrapper}`}>
+        <form className={styles["form-container"]} onSubmit={handleSubmit}>
+          <Input
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
+            type="text"
+            placeholder="Email..."
+            name="email"
+          />
+          <Input
+            value={password}
+            onChange={(e) => setPassword(e.target.value)}
+            type="password"
+            placeholder="Пароль..."
+            name="password"
+          />
+          <PrimaryButton type="submit">{submitText}</PrimaryButton>
+        </form>
+        <Link className={styles.link} to={linkTo}>
+          {linkText}
+        </Link>
+      </div>
+    </>
   );
 }
 
