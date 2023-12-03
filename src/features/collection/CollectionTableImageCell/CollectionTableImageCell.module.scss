@@ -1,8 +1,9 @@
 .cell {
-  gap: 0.25rem;
+  display: flex;
+  justify-content: center;
   padding: 0.25rem;
-  text-align: center;
-  vertical-align: middle;
+  gap: 0.25rem;
+  height: 4rem;
 }
 
 .image {

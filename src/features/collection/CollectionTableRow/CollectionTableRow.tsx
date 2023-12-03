@@ -15,7 +15,7 @@ function CollectionTableRow({ coin }: CollectionTableRowProps) {
       className={styles.row}
     >
       {coin.values.map((value) =>
-        value.type === "images" ? (
+        value.type === "images" && coin.imageIds.length !== 0 ? (
           <CollectionTableImageCell
             key={value.columnId}
             imageIds={coin.imageIds}
