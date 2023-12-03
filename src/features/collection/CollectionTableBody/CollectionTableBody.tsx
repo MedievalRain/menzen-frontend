@@ -3,13 +3,12 @@ import Loader from "../../../ui/Loader/Loader";
 import NewCoinDialog from "../../coin/NewCoinForm/NewCoinDialog";
 import CollectionTableRow from "../CollectionTableRow/CollectionTableRow";
 import CollectionTableTip from "../CollectionTableTip/CollectionTableTip";
-
 interface CollectionTableBodyProps {
   collectionId: string;
 }
 
 function CollectionTableBody({ collectionId }: CollectionTableBodyProps) {
-  const { isFetching, sortedCoins, coins } = useCoins(collectionId);
+  const { sortedCoins, coins } = useCoins(collectionId);
 
   if (!coins)
     return (
@@ -26,7 +25,7 @@ function CollectionTableBody({ collectionId }: CollectionTableBodyProps) {
       </CollectionTableTip>
     );
   return (
-    <tbody>
+    <tbody style={{ height: `${sortedCoins.length * 4}rem` }}>
       {sortedCoins.map((coin) => (
         <CollectionTableRow key={coin.id} coin={coin} />
       ))}
