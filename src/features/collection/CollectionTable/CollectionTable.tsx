@@ -9,20 +9,13 @@ interface CollectionTableProps {
 }
 
 function CollectionTable({ collectionId }: CollectionTableProps) {
-  const { coins, formattedCoins, columns } = useTableCoins(collectionId);
+  const { coins, columns } = useTableCoins(collectionId);
   return (
     <div className={styles.wrapper}>
-      <TableControls
-        collectionId={collectionId}
-        formattedCoins={formattedCoins}
-      />
+      <TableControls collectionId={collectionId} />
       <table className={styles.table}>
         <CollectionHead columns={columns} />
-        <CollectionTableBody
-          collectionId={collectionId}
-          coins={coins}
-          formattedCoins={formattedCoins}
-        />
+        <CollectionTableBody collectionId={collectionId} coins={coins} />
       </table>
     </div>
   );

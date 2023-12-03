@@ -1,6 +1,6 @@
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 import { coinApi } from "../api/coinApi/coinApi";
-import { useAppSelector } from "./storeHooks";
+import { useAppDispatch, useAppSelector } from "./storeHooks";
 import { useColumns } from "./useColumns";
 import {
   Filters,
@@ -10,22 +10,23 @@ import {
 } from "../features/collection/slice/collectionSliceTypes";
 import { Coin } from "../api/coinApi/coinApiTypes";
 import { Column } from "../api/columnApi/columnApiTypes";
+import { setCoins } from "../features/collection/slice/collectionSlice";
 const collator = new Intl.Collator("en");
 export const useTableCoins = (collectionId: string) => {
   const { columns } = useColumns(collectionId);
   const { data: coins } = coinApi.useGetCoinsQuery(collectionId);
   const { filters, sorting } = useAppSelector((state) => state.collection);
-  const [formattedCoins, setFormattedCoins] = useState<TableCoin[]>([]);
+  const dispatch = useAppDispatch();
 
   useEffect(() => {
     if (columns && coins) {
       const filteredCoins = filterCoins(coins, columns, filters);
       const sortedCoins = sortCoins(filteredCoins, sorting);
-      setFormattedCoins(sortedCoins);
+      dispatch(setCoins(sortedCoins));
     }
   }, [filters, sorting, coins, columns]);
 
-  return { coins, formattedCoins, columns };
+  return { coins, columns };
 };
 
 const filterCoins = (

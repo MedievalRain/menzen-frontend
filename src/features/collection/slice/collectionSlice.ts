@@ -1,7 +1,12 @@
 import { PayloadAction, createSlice } from "@reduxjs/toolkit";
-import { CollectionState, SetFilterAction } from "./collectionSliceTypes";
+import {
+  CollectionState,
+  SetFilterAction,
+  TableCoin,
+} from "./collectionSliceTypes";
 
 const initialState: CollectionState = {
+  coins: [],
   pagination: { page: 0, pageSize: 20 },
   sorting: { type: undefined, id: undefined },
   filters: {},
@@ -34,7 +39,11 @@ const collectonSlice = createSlice({
     setPage: (state, action: PayloadAction<number>) => {
       state.pagination.page = action.payload;
     },
+    setCoins: (state, action: PayloadAction<TableCoin[]>) => {
+      state.coins = action.payload;
+    },
   },
 });
-export const { setFilter, setPage, setSorting } = collectonSlice.actions;
+export const { setFilter, setPage, setSorting, setCoins } =
+  collectonSlice.actions;
 export default collectonSlice.reducer;
