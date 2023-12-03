@@ -7,7 +7,7 @@ import {
 
 const initialState: CollectionState = {
   coins: [],
-  pagination: { page: 0, pageSize: 20 },
+  pagination: { page: 1, pageSize: 20 },
   sorting: { type: undefined, id: undefined },
   filters: {},
 };

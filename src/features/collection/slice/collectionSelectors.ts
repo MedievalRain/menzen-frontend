@@ -8,8 +8,9 @@ const selectPagination = (state: CollectionState) => state.pagination;
 export const selectPaginatedCoins = createSelector(
   [selectCoins, selectPagination],
   (coins, pagination) => {
-    const startIndex = pagination.page * pagination.pageSize;
-    const endIndex = startIndex + pagination.pageSize;
-    return coins.slice(startIndex, endIndex);
+    return coins.slice(
+      (pagination.page - 1) * pagination.pageSize,
+      pagination.page * pagination.pageSize
+    );
   }
 );

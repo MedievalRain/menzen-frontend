@@ -1,6 +1,8 @@
-import { useAppSelector } from "../../../hooks/storeHooks";
+import { useAppDispatch, useAppSelector } from "../../../hooks/storeHooks";
 import ArrowLeftIcon from "../../../ui/icons/ArrowLeftIcon";
 import ArrowRightIcon from "../../../ui/icons/ArrowRightIcon";
+import { setPage } from "../slice/collectionSlice";
+import { getMaxPage } from "../utils";
 import styles from "./PaginationControls.module.scss";
 
 function PaginationControls() {
@@ -8,16 +10,25 @@ function PaginationControls() {
     pagination: { page, pageSize },
     coins,
   } = useAppSelector((state) => state.collection);
-  const maxPage = Math.floor(coins.length / pageSize);
+  const dispatch = useAppDispatch();
+  const maxPage = getMaxPage(coins.length, pageSize);
   return (
     <div className={styles.wrapper}>
-      <button className={styles.button}>
+      <button
+        disabled={page <= 1}
+        onClick={() => dispatch(setPage(page - 1))}
+        className={styles.button}
+      >
         <ArrowLeftIcon />
       </button>
       <span>
         {page}/{maxPage}
       </span>
-      <button className={styles.button}>
+      <button
+        disabled={page >= maxPage}
+        onClick={() => dispatch(setPage(page + 1))}
+        className={styles.button}
+      >
         <ArrowRightIcon />
       </button>
     </div>
