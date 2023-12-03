@@ -22,7 +22,7 @@ function CollectionHead({ columns }: CollectionHeadProps) {
               )
             )
         ) : (
-          <th>
+          <th colSpan={9999}>
             <Loader />
           </th>
         )}
