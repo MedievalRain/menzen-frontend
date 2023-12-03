@@ -4,6 +4,7 @@ export interface FormattedCoinValue {
   id: string;
   name: string;
   value: string;
+  type: ColumnType;
 }
 
 export interface FormattedCoin {

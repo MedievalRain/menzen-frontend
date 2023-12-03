@@ -47,19 +47,24 @@ function EditCoinValuesDialog({ coin }: EditCoinValuesDialogProps) {
         <div className={styles.window}>
           <h2 className={styles.title}>Изменить поля</h2>
           <ul className={styles["column-list"]}>
-            {coinValues.map((value) => (
-              <li className={styles.item} key={value.id}>
-                <label htmlFor={value.id}>{value.name}</label>
-                <Input
-                  placeholder="..."
-                  id={value.id}
-                  type="text"
-                  className={styles.input}
-                  value={value.value}
-                  onChange={(e) => handleInputChange(e.target.value, value.id)}
-                />
-              </li>
-            ))}
+            {coinValues.map(
+              (value) =>
+                value.type === "regular" && (
+                  <li className={styles.item} key={value.id}>
+                    <label htmlFor={value.id}>{value.name}</label>
+                    <Input
+                      placeholder="..."
+                      id={value.id}
+                      type="text"
+                      className={styles.input}
+                      value={value.value}
+                      onChange={(e) =>
+                        handleInputChange(e.target.value, value.id)
+                      }
+                    />
+                  </li>
+                )
+            )}
           </ul>
 
           <div className={styles.buttons}>

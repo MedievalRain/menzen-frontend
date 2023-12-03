@@ -58,21 +58,26 @@ function NewCoinDialog({ collectionId }: NewCoinDialogProps) {
           {isFetching && <Loader />}
           {!isFetching && columns && (
             <ul className={styles["column-list"]}>
-              {columns.map((column) => (
-                <li className={styles.item} key={column.id}>
-                  <label htmlFor={column.id}>{column.name}</label>
-                  <Input
-                    value={columnValues ? columnValues[column.id] || "" : ""}
-                    onChange={(e) =>
-                      setColumnsValues(e.target.value, column.id)
-                    }
-                    placeholder="..."
-                    id={column.id}
-                    type="text"
-                    className={styles.input}
-                  />
-                </li>
-              ))}
+              {columns.map(
+                (column) =>
+                  column.type === "regular" && (
+                    <li className={styles.item} key={column.id}>
+                      <label htmlFor={column.id}>{column.name}</label>
+                      <Input
+                        value={
+                          columnValues ? columnValues[column.id] || "" : ""
+                        }
+                        onChange={(e) =>
+                          setColumnsValues(e.target.value, column.id)
+                        }
+                        placeholder="..."
+                        id={column.id}
+                        type="text"
+                        className={styles.input}
+                      />
+                    </li>
+                  )
+              )}
             </ul>
           )}
           <div className={styles.buttons}>
