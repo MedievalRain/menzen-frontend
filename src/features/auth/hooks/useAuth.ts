@@ -24,7 +24,7 @@ type AuthMutation = UseMutation<
     >,
     never,
     void,
-    "authApi"
+    "baseApi"
   >
 >;
 export const useAuth = (mutation: AuthMutation, redirectTo: string) => {
