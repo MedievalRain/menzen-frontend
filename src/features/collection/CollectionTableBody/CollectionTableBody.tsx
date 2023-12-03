@@ -7,8 +7,18 @@ interface CollectionTableBodyProps {
 }
 
 function CollectionTableBody({ collectionId }: CollectionTableBodyProps) {
-  const { isFetching, sortedCoins } = useCoins(collectionId);
-  if (isFetching || !sortedCoins) return <Loader />;
+  const { isFetching, sortedCoins, coins } = useCoins(collectionId);
+
+  if (!sortedCoins)
+    return (
+      <tbody>
+        <tr>
+          <td colSpan={9999}>
+            <Loader />
+          </td>
+        </tr>
+      </tbody>
+    );
   return (
     <tbody>
       {sortedCoins.map((coin) => (

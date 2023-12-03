@@ -60,7 +60,7 @@ export const useCoins = (collectionId: string) => {
     sortingType,
   ]);
 
-  return { sortedCoins, isFetching: isCoinFetching || isColumnFetching };
+  return { sortedCoins, isFetching: isCoinFetching || isColumnFetching, coins };
 };
 
 const filterCoins = (
