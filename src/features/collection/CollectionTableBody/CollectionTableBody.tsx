@@ -1,16 +1,20 @@
-import { useAppSelector } from "../../../hooks/storeHooks";
-import { useTableCoins } from "../../../hooks/useTableCoins";
+import { Coin } from "../../../api/coinApi/coinApiTypes";
 import Loader from "../../../ui/Loader/Loader";
 import NewCoinDialog from "../../coin/NewCoinForm/NewCoinDialog";
 import CollectionTableRow from "../CollectionTableRow/CollectionTableRow";
 import CollectionTableTip from "../CollectionTableTip/CollectionTableTip";
+import { TableCoin } from "../slice/collectionSliceTypes";
 interface CollectionTableBodyProps {
+  coins: Coin[] | undefined;
+  formattedCoins: TableCoin[];
   collectionId: string;
 }
 
-function CollectionTableBody({ collectionId }: CollectionTableBodyProps) {
-  const { coins } = useTableCoins(collectionId);
-  const formattedCoins = useAppSelector((state) => state.collection.coins);
+function CollectionTableBody({
+  coins,
+  formattedCoins,
+  collectionId,
+}: CollectionTableBodyProps) {
   if (!coins)
     return (
       <CollectionTableTip>
@@ -27,7 +31,7 @@ function CollectionTableBody({ collectionId }: CollectionTableBodyProps) {
     );
   return (
     <tbody>
-      {formattedCoins.slice(0, 20).map((coin) => (
+      {formattedCoins.map((coin) => (
         <CollectionTableRow key={coin.id} coin={coin} />
       ))}
     </tbody>

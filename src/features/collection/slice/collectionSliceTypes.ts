@@ -19,7 +19,6 @@ export interface SortingState {
   id: string | undefined;
 }
 export type CollectionState = {
-  coins: TableCoin[];
   pagination: {
     pageSize: number;
     page: number;

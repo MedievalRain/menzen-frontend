@@ -1,14 +1,13 @@
 import Loader from "../../../ui/Loader/Loader";
 import styles from "./CollectionHead.module.scss";
-import { useColumns } from "../../../hooks/useColumns";
 import CollectionHeadItem from "../CollectionHeadItem/CollectionHeadItem";
 import CollectionHeadSpecialItem from "../CollectionHeadSpecialItem/CollectionHeadSpecialItem";
+import { Column } from "../../../api/columnApi/columnApiTypes";
 interface CollectionHeadProps {
-  collectionId: string;
+  columns: Column[] | undefined;
 }
 
-function CollectionHead({ collectionId }: CollectionHeadProps) {
-  const { columns } = useColumns(collectionId);
+function CollectionHead({ columns }: CollectionHeadProps) {
   return (
     <thead className={styles.head}>
       <tr className={styles.columns}>
