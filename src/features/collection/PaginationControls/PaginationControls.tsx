@@ -30,7 +30,7 @@ function PaginationControls() {
       >
         <ArrowLeftIcon />
       </button>
-      <span>
+      <span className={styles.text}>
         {page}/{maxPage}
       </span>
       <button
