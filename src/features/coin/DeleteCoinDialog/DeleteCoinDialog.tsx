@@ -19,7 +19,7 @@ function DeleteCoinDialog({ coinId, collectionId }: DeleteCoinDialogProps) {
   useError(isError, error);
   useEffect(() => {
     if (isSuccess) {
-      navigate(`/app/collection/${collectionId}`);
+      navigate("..", { relative: "path" });
     }
   }, [isSuccess, isLoading]);
 
