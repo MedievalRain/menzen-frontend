@@ -24,9 +24,7 @@ function CollectionHead({ collectionId }: CollectionHeadProps) {
             )
         ) : (
           <th>
-            <td>
-              <Loader />
-            </td>
+            <Loader />
           </th>
         )}
       </tr>
