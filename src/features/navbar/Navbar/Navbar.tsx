@@ -8,9 +8,11 @@ function Navbar() {
   usePath();
   return (
     <nav className={styles.nav}>
-      <Link to="/app">
-        <NavLogo />
-      </Link>
+      <div>
+        <Link to="/app" className={styles.link}>
+          <NavLogo />
+        </Link>
+      </div>
       <Breadcrumb />
       <div></div>
     </nav>

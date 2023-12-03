@@ -8,4 +8,12 @@
   align-items: center;
   padding: 0.5rem 0rem;
   width: 100%;
+  > * {
+    width: 100%;
+  }
+}
+
+.link {
+  display: block;
+  width: fit-content;
 }
