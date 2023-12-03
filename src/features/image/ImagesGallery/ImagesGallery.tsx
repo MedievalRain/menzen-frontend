@@ -8,12 +8,12 @@ function ImagesGallery({ imageIds }: ImagesGalleryProps) {
   return (
     <div className={styles.grid}>
       {imageIds.map((id) => (
-        <div key={id}>
+        <button key={id}>
           <img
             className={styles.image}
             src={`https://files.medievalrain.net/${id}.webp`}
           />
-        </div>
+        </button>
       ))}
     </div>
   );
