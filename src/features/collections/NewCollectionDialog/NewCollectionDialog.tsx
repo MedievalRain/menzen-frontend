@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Dialog from "../../../ui/Dialog/Dialog";
 import Input from "../../../ui/Input/Input";
 import PrimaryButton from "../../../ui/PrimaryButton/PrimaryButton";
@@ -8,7 +8,7 @@ import styles from "./NewCollectionDialog.module.scss";
 import { useError } from "../../../hooks/useError";
 import { collectionApi } from "../../../api/collectionApi/collectionApi";
 function NewCollectionDialog() {
-  const [newCollection, { isError, error, isSuccess }] =
+  const [newCollection, { isError, error, isSuccess, reset }] =
     collectionApi.useNewCollectionMutation();
   const [name, setName] = useState("");
   useError(isError, error);
@@ -16,6 +16,9 @@ function NewCollectionDialog() {
     newCollection(name);
     setName("");
   };
+  useEffect(() => {
+    if (isSuccess) reset();
+  }, [isSuccess]);
 
   return (
     <div className={styles.wrapper}>
