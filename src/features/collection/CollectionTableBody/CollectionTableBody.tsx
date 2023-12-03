@@ -1,6 +1,8 @@
 import { useCoins } from "../../../hooks/useCoins";
 import Loader from "../../../ui/Loader/Loader";
+import NewCoinDialog from "../../coin/NewCoinForm/NewCoinDialog";
 import CollectionTableRow from "../CollectionTableRow/CollectionTableRow";
+import CollectionTableTip from "../CollectionTableTip/CollectionTableTip";
 
 interface CollectionTableBodyProps {
   collectionId: string;
@@ -9,15 +11,19 @@ interface CollectionTableBodyProps {
 function CollectionTableBody({ collectionId }: CollectionTableBodyProps) {
   const { isFetching, sortedCoins, coins } = useCoins(collectionId);
 
-  if (!sortedCoins)
+  if (!coins)
     return (
-      <tbody>
-        <tr>
-          <td colSpan={9999}>
-            <Loader />
-          </td>
-        </tr>
-      </tbody>
+      <CollectionTableTip>
+        <Loader />
+      </CollectionTableTip>
+    );
+
+  if (coins.length === 0)
+    return (
+      <CollectionTableTip>
+        Начните добавлять монеты нажав на{" "}
+        <NewCoinDialog collectionId={collectionId} />
+      </CollectionTableTip>
     );
   return (
     <tbody>
