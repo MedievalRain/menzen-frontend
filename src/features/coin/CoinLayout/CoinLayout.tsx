@@ -3,6 +3,7 @@ import Loader from "../../../ui/Loader/Loader";
 import styles from "./CoinLayout.module.scss";
 import CoinValuesList from "../CoinValuesList/CoinValuesList";
 import CoinDropdown from "../CoinDropdown/CoinDropdown";
+import ImagesGallery from "../../image/ImagesGallery/ImagesGallery";
 interface CoinLayoutProps {
   coinId: string;
   collectionId: string;
@@ -16,7 +17,10 @@ function CoinLayout({ coinId, collectionId }: CoinLayoutProps) {
   return (
     <div className={styles.wrapper}>
       <CoinDropdown collectionId={collectionId} coin={coin} />
-      <CoinValuesList coin={coin} />
+      <div className={styles.content}>
+        <CoinValuesList coin={coin} />
+        <ImagesGallery imageIds={coin.imageIds} />
+      </div>
     </div>
   );
 }
