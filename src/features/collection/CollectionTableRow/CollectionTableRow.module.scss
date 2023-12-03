@@ -1,8 +1,11 @@
 .cell {
-  padding: 0.5rem 0;
+  text-align: center;
+  vertical-align: middle;
+  padding: 0.25rem;
 }
 
 .row {
+  height: 4rem;
   cursor: pointer;
   &:hover {
     background-color: var(--secondary-color);
