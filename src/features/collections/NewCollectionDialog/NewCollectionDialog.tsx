@@ -22,7 +22,7 @@ function NewCollectionDialog() {
 
   return (
     <div className={styles.wrapper}>
-      <Dialog id="new-collection">
+      <Dialog>
         <Dialog.Trigger>
           <button className={styles.trigger}>
             <PlusIcon height="5em" />

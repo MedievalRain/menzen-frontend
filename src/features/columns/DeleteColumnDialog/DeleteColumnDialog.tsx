@@ -16,7 +16,7 @@ function DeleteColumnDialog({ column, collectionId }: DeleteColumnDialogProps) {
     columnApi.useDeleteColumnMutation();
   useError(isError, error);
   return (
-    <Dialog id="delete-column">
+    <Dialog>
       <Dialog.Trigger>
         <StyledDropdownItem>Удалить</StyledDropdownItem>
       </Dialog.Trigger>

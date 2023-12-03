@@ -14,7 +14,7 @@ function DeleteImageDialog({ imageId }: DeleteImageDialogProps) {
     imageApi.useDeleteImageMutation();
   useError(isError, error);
   return (
-    <Dialog id="delete-image-dialog">
+    <Dialog>
       <Dialog.Trigger>
         <PrimaryButton>Удалить</PrimaryButton>
       </Dialog.Trigger>

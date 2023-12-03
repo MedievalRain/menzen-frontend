@@ -21,7 +21,7 @@ function NewColumnDialog({ collectionId }: NewColumnDialogProps) {
     setName("");
   };
   return (
-    <Dialog id="new-column">
+    <Dialog>
       <Dialog.Trigger>
         <PrimaryButton className={styles.trigger}>Добавить</PrimaryButton>
       </Dialog.Trigger>

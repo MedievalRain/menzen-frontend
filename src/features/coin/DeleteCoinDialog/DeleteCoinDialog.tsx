@@ -23,7 +23,7 @@ function DeleteCoinDialog({ coinId }: DeleteCoinDialogProps) {
   }, [isSuccess, isLoading]);
 
   return (
-    <Dialog id="delete-coin">
+    <Dialog>
       <Dialog.Trigger>
         <StyledDropdownItem>Удалить</StyledDropdownItem>
       </Dialog.Trigger>

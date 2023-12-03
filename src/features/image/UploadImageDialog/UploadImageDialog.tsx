@@ -29,7 +29,7 @@ function UploadImageDialog({ coinId }: UploadImageDialogProps) {
   }, [isSuccess]);
 
   return (
-    <Dialog id="upload-image-dialog">
+    <Dialog>
       <Dialog.Trigger>
         <StyledDropdownItem>Загрузить фото</StyledDropdownItem>
       </Dialog.Trigger>

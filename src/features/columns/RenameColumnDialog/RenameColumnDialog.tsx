@@ -21,7 +21,7 @@ function RenameColumnDialog({ column, collectionId }: RenameColumnDialogProps) {
   useError(isError, error);
   return (
     <div className={styles.wrapper}>
-      <Dialog id="rename-column">
+      <Dialog>
         <Dialog.Trigger>
           <StyledDropdownItem>Переименовать</StyledDropdownItem>
         </Dialog.Trigger>

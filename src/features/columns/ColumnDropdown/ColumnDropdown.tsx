@@ -18,7 +18,7 @@ function ColumnDropdown({ column, collectionId }: ColumnDropdownProps) {
     columnApi.useChangeColumnOrderMutation();
   useError(isError, error);
   return (
-    <Dropdown id="column-dropdown">
+    <Dropdown>
       <div className={styles.wrapper}>
         <Dropdown.Trigger>
           <button className={styles.trigger}>

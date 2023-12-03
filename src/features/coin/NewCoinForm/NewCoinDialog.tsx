@@ -48,7 +48,7 @@ function NewCoinDialog({ collectionId }: NewCoinDialogProps) {
   }, [isSuccess]);
 
   return (
-    <Dialog id="new-coin">
+    <Dialog>
       <Dialog.Trigger>
         <PrimaryButton>Добавить монету</PrimaryButton>
       </Dialog.Trigger>

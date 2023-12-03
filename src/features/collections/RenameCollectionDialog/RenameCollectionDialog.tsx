@@ -20,7 +20,7 @@ function RenameCollectionDialog({ collection }: RenameCollectionDialogProps) {
   useError(isError, error);
   return (
     <div className={styles.wrapper}>
-      <Dialog id="rename-collection">
+      <Dialog>
         <Dialog.Trigger>
           <StyledDropdownItem>Переименовать</StyledDropdownItem>
         </Dialog.Trigger>

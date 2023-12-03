@@ -39,7 +39,7 @@ function EditCoinValuesDialog({ coin }: EditCoinValuesDialogProps) {
       }),
     });
   return (
-    <Dialog id="edit-coin-values">
+    <Dialog>
       <Dialog.Trigger>
         <StyledDropdownItem>Изменить поля</StyledDropdownItem>
       </Dialog.Trigger>

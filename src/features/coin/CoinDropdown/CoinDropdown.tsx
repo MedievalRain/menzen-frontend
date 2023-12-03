@@ -13,7 +13,7 @@ interface CoinDropdownProps {
 function CoinDropdown({ coin }: CoinDropdownProps) {
   return (
     <div className={styles.wrapper}>
-      <Dropdown id="coin-dropdown">
+      <Dropdown>
         <Dropdown.Trigger>
           <SecondaryButton className={styles.trigger}>
             <span>Редактировать</span>

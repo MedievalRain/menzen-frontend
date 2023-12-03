@@ -16,7 +16,7 @@ function DeleteCollectionDialog({ collection }: DeleteCollectionDialogProps) {
     collectionApi.useDeleteCollectionMutation();
   useError(isError, error);
   return (
-    <Dialog id="delete-collection">
+    <Dialog>
       <Dialog.Trigger>
         <StyledDropdownItem>Удалить</StyledDropdownItem>
       </Dialog.Trigger>

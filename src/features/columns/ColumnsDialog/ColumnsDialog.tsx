@@ -13,7 +13,7 @@ function ColumnsDialog({ collectionId }: ColumnsDialogProps) {
   const { data: columns } = columnApi.useGetColumnsQuery(collectionId);
   const collectionName = useCollectionName(collectionId);
   return (
-    <Dialog id="column-dialog">
+    <Dialog>
       <Dialog.Trigger>
         <PrimaryButton>Редактировать</PrimaryButton>
       </Dialog.Trigger>

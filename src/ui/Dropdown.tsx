@@ -27,11 +27,9 @@ const defaultContextValue: ContextType = {
 
 const DropdownContext = createContext<ContextType>(defaultContextValue);
 
-interface DropdownProps extends PropsWithChildren {
-  id: string;
-}
-function Dropdown({ children, id }: DropdownProps) {
+function Dropdown({ children }: PropsWithChildren) {
   const [isOpened, setIsOpened] = useState(false);
+  const [id, setId] = useState(crypto.randomUUID());
   const dispatch = useAppDispatch();
   const open = () => {
     setIsOpened(true);

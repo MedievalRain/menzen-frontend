@@ -32,11 +32,10 @@ const defaultContextValue: ContextType = {
 };
 const DialogContext = createContext<ContextType>(defaultContextValue);
 
-interface DialogProps extends PropsWithChildren {
-  id: string;
-}
-function Dialog({ children, id }: DialogProps) {
+function Dialog({ children }: PropsWithChildren) {
   const [isOpened, setIsOpened] = useState(false);
+  const [id, setId] = useState(crypto.randomUUID());
+
   const dispatch = useAppDispatch();
   const open = () => {
     setIsOpened(true);

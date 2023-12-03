@@ -11,7 +11,7 @@ interface CollectionDropdownProps {
 
 function CollectionDropdown({ collection }: CollectionDropdownProps) {
   return (
-    <Dropdown id="collection-dropdown">
+    <Dropdown>
       <div className={styles.wrapper}>
         <Dropdown.Trigger>
           <button className={styles.trigger}>
