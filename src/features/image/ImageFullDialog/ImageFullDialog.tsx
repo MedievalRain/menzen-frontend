@@ -8,7 +8,7 @@ interface ImageFullDialogProps {
 
 function ImageFullDialog({ imageId }: ImageFullDialogProps) {
   return (
-    <Dialog id={imageId}>
+    <Dialog>
       <Dialog.Trigger>
         <button>
           <img
