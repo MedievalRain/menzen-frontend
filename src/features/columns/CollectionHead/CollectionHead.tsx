@@ -1,26 +1,29 @@
 import Loader from "../../../ui/Loader/Loader";
 import styles from "./CollectionHead.module.scss";
+import { useColumns } from "../../../hooks/useColumns";
 import CollectionHeadItem from "../CollectionHeadItem/CollectionHeadItem";
-import { columnApi } from "../../../api/columnApi/columnApi";
 interface CollectionHeadProps {
   collectionId: string;
 }
 
 function CollectionHead({ collectionId }: CollectionHeadProps) {
-  const { data: columns } = columnApi.useGetColumnsQuery(collectionId);
+  const { columns } = useColumns(collectionId);
   return (
     <thead className={styles.head}>
       <tr className={styles.columns}>
-        {columns ? null : (
+        {columns ? (
+          columns
+            .filter((column) => column.enabled)
+            .map((column) => (
+              <CollectionHeadItem key={column.id} column={column} />
+            ))
+        ) : (
           <th>
-            <Loader />
+            <td>
+              <Loader />
+            </td>
           </th>
         )}
-        {columns
-          ?.filter((column) => column.enabled)
-          .map((column) => (
-            <CollectionHeadItem key={column.id} column={column} />
-          ))}
       </tr>
     </thead>
   );

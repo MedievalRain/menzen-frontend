@@ -10,5 +10,5 @@ export const useColumns = (collectionId: string) => {
   } = columnApi.useGetColumnsQuery(collectionId);
   useError(isError, error);
 
-  return { columns: columns || [], isFetching };
+  return { columns, isFetching };
 };

@@ -18,7 +18,7 @@ export const useCoin = (coinId: string, collectionId: string) => {
   );
 
   useEffect(() => {
-    if (coin && !isCoinFetching && !isCoinFetching) {
+    if (coin && columns && !isCoinFetching && !isCoinFetching) {
       const formattedValues: FormattedCoinValue[] = columns.map((column) => {
         const value =
           coin.values.find((value) => value.columnId === column.id)?.value ||
