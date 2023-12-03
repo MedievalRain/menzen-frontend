@@ -15,7 +15,6 @@ import { useCloseOutside } from "../../hooks/useCloseOutside";
 import { useAppDispatch } from "../../hooks/storeHooks";
 import { openComponent, closeComponent } from "../UIControls/uiSlice";
 import { useCloseKey } from "../../hooks/useCloseKey";
-import { useSubmitKey } from "../../hooks/useSubmitKey";
 
 interface ContextType {
   isOpened: boolean;
@@ -34,7 +33,7 @@ const DialogContext = createContext<ContextType>(defaultContextValue);
 
 function Dialog({ children }: PropsWithChildren) {
   const [isOpened, setIsOpened] = useState(false);
-  const [id, setId] = useState(crypto.randomUUID());
+  const [id] = useState(crypto.randomUUID());
 
   const dispatch = useAppDispatch();
   const open = () => {
@@ -69,7 +68,7 @@ interface SubmitProps extends ElementProps {
 }
 
 function Submit({ children, shouldClose }: SubmitProps) {
-  const { close, id } = useContext(DialogContext);
+  const { close } = useContext(DialogContext);
   useEffect(() => {
     if (shouldClose) {
       close();
@@ -86,7 +85,6 @@ function Submit({ children, shouldClose }: SubmitProps) {
       }
     }
   };
-  useSubmitKey(id, handleClick);
 
   return cloneElement(children, {
     onClick: handleClick,

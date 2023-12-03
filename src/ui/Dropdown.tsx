@@ -29,7 +29,7 @@ const DropdownContext = createContext<ContextType>(defaultContextValue);
 
 function Dropdown({ children }: PropsWithChildren) {
   const [isOpened, setIsOpened] = useState(false);
-  const [id, setId] = useState(crypto.randomUUID());
+  const [id] = useState(crypto.randomUUID());
   const dispatch = useAppDispatch();
   const open = () => {
     setIsOpened(true);
