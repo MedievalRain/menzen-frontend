@@ -12,7 +12,7 @@ interface CollectionHeadItemProps {
 function CollectionHeadItem({ column }: CollectionHeadItemProps) {
   const dispatch = useAppDispatch();
   const searchText = useAppSelector(
-    (state) => state.collection.filters[column.id]
+    (state) => state.collection.filters[column.id] || ""
   );
   const sorting = useAppSelector((state) => state.collection.sorting);
 

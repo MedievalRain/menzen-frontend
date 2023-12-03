@@ -12,11 +12,7 @@ const collectonSlice = createSlice({
   initialState,
   reducers: {
     setFilter: (state, action: PayloadAction<SetFilterAction>) => {
-      if (action.payload.value === "") {
-        delete state.filters[action.payload.id];
-      } else {
-        state.filters[action.payload.id] = action.payload.value;
-      }
+      state.filters[action.payload.id] = action.payload.value;
     },
     setSorting: (state, action: PayloadAction<string>) => {
       if (state.sorting.id === action.payload) {
