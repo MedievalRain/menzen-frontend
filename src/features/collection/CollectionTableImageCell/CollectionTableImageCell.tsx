@@ -8,7 +8,7 @@ function CollectionTableImageCell({ imageIds }: CollectionTableImageCellProps) {
   return (
     <td className={styles.cell}>
       <div className={styles.gallery}>
-        {imageIds.slice(0, 4).map((id) => (
+        {imageIds.slice(0, 2).map((id) => (
           <img
             className={styles.image}
             key={id}
