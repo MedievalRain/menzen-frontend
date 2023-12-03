@@ -1,4 +1,5 @@
-import { useCoins } from "../../../hooks/useCoins";
+import { useAppSelector } from "../../../hooks/storeHooks";
+import { useTableCoins } from "../../../hooks/useTableCoins";
 import Loader from "../../../ui/Loader/Loader";
 import NewCoinDialog from "../../coin/NewCoinForm/NewCoinDialog";
 import CollectionTableRow from "../CollectionTableRow/CollectionTableRow";
@@ -8,8 +9,8 @@ interface CollectionTableBodyProps {
 }
 
 function CollectionTableBody({ collectionId }: CollectionTableBodyProps) {
-  const { sortedCoins, coins } = useCoins(collectionId);
-
+  const { coins } = useTableCoins(collectionId);
+  const formattedCoins = useAppSelector((state) => state.collection.coins);
   if (!coins)
     return (
       <CollectionTableTip>
@@ -25,8 +26,8 @@ function CollectionTableBody({ collectionId }: CollectionTableBodyProps) {
       </CollectionTableTip>
     );
   return (
-    <tbody style={{ height: `${sortedCoins.length * 4}rem` }}>
-      {sortedCoins.map((coin) => (
+    <tbody>
+      {formattedCoins.slice(0, 20).map((coin) => (
         <CollectionTableRow key={coin.id} coin={coin} />
       ))}
     </tbody>

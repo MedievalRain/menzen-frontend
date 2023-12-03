@@ -12,16 +12,3 @@ export interface FormattedCoin {
   values: FormattedCoinValue[];
   imageIds: string[];
 }
-
-export interface TableCoinValue {
-  columnId: string;
-  value: string;
-  type: ColumnType;
-}
-
-export interface TableCoin {
-  id: string;
-  createdAt: Date;
-  values: TableCoinValue[];
-  imageIds: string[];
-}

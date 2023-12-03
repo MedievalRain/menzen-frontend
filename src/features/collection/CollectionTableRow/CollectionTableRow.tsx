@@ -1,7 +1,8 @@
 import { useNavigate } from "react-router-dom";
 import styles from "./CollectionTableRow.module.scss";
-import { TableCoin } from "../../../types";
+
 import CollectionTableImageCell from "../CollectionTableImageCell/CollectionTableImageCell";
+import { TableCoin } from "../slice/collectionSliceTypes";
 interface CollectionTableRowProps {
   coin: TableCoin;
 }

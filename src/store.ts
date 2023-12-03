@@ -1,13 +1,13 @@
 import { configureStore } from "@reduxjs/toolkit";
 
 import uiReducer from "./ui/UIControls/uiSlice";
-import columnReducer from "./features/columns/columnSlice";
+import collectonSlice from "./features/collection/slice/collectionSlice";
 import { baseApi } from "./api/baseApi";
 
 const store = configureStore({
   reducer: {
     ui: uiReducer,
-    column: columnReducer,
+    collection: collectonSlice,
     [baseApi.reducerPath]: baseApi.reducer,
   },
   middleware: (getDefaultMiddleware) =>
