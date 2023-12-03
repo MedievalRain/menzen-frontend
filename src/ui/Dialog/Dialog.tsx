@@ -15,6 +15,7 @@ import { useCloseOutside } from "../../hooks/useCloseOutside";
 import { useAppDispatch } from "../../hooks/storeHooks";
 import { openComponent, closeComponent } from "../UIControls/uiSlice";
 import { useCloseKey } from "../../hooks/useCloseKey";
+import { useSubmitKey } from "../../hooks/useSubmitKey";
 
 interface ContextType {
   isOpened: boolean;
@@ -69,15 +70,15 @@ interface SubmitProps extends ElementProps {
 }
 
 function Submit({ children, shouldClose }: SubmitProps) {
-  const { close } = useContext(DialogContext);
+  const { close, id } = useContext(DialogContext);
   useEffect(() => {
     if (shouldClose) {
       close();
     }
   }, [shouldClose, close]);
-  const handleClick = async (event: React.MouseEvent<HTMLElement>) => {
+  const handleClick = async () => {
     if (typeof children.props.onClick === "function") {
-      const result = children.props.onClick(event);
+      const result = children.props.onClick();
       if (result instanceof Promise) {
         await result;
       }
@@ -86,6 +87,7 @@ function Submit({ children, shouldClose }: SubmitProps) {
       }
     }
   };
+  useSubmitKey(id, handleClick);
 
   return cloneElement(children, {
     onClick: handleClick,
