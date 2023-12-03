@@ -11,11 +11,15 @@
 .button {
   transition: background-color 0.1s ease;
   border-radius: 0.375rem;
-  padding: 0.5rem 0.5rem;
+  padding: 0.5rem;
   display: flex;
   justify-content: center;
   align-items: center;
   &:hover {
     background-color: var(--secondary-color);
+  }
+  &:disabled {
+    background-color: var(--secondary-color);
+    cursor: not-allowed;
   }
 }
