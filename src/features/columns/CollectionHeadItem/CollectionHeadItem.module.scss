@@ -1,12 +1,8 @@
 .item {
+  margin: auto;
   padding: 0.5rem 0;
   border-bottom: 1px solid var(--secondary-color);
   font-weight: 600;
-}
-
-.wrapper {
-  margin: auto;
-
   display: flex;
   flex-direction: column;
   justify-content: center;

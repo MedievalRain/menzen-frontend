@@ -18,32 +18,30 @@ function CollectionHeadItem({ column }: CollectionHeadItemProps) {
   return (
     <th>
       <div className={styles.item}>
-        <div className={styles.wrapper}>
-          <button
-            onClick={() => dispatch(sort(column.id))}
-            className={`${styles["name-wrapper"]} ${
-              sorting.id === column.id ? styles.selected : ""
-            }`}
-          >
-            <p className={styles.name}>{column.name}</p>
+        <button
+          onClick={() => dispatch(sort(column.id))}
+          className={`${styles["name-wrapper"]} ${
+            sorting.id === column.id ? styles.selected : ""
+          }`}
+        >
+          <p className={styles.name}>{column.name}</p>
 
-            {sorting.id === column.id && (
-              <div className={styles["icon-wrapper"]}>
-                {sorting.type === "DESC" && <SortUpIcon />}
-                {sorting.type === "ASC" && <SortDownIcon />}
-              </div>
-            )}
-          </button>
-          <Input
-            value={searchText}
-            onChange={(e) =>
-              dispatch(search({ columnId: column.id, value: e.target.value }))
-            }
-            className={styles.input}
-            type="text"
-            placeholder="Поиск..."
-          />
-        </div>
+          {sorting.id === column.id && (
+            <div className={styles["icon-wrapper"]}>
+              {sorting.type === "DESC" && <SortUpIcon />}
+              {sorting.type === "ASC" && <SortDownIcon />}
+            </div>
+          )}
+        </button>
+        <Input
+          value={searchText}
+          onChange={(e) =>
+            dispatch(search({ columnId: column.id, value: e.target.value }))
+          }
+          className={styles.input}
+          type="text"
+          placeholder="Поиск..."
+        />
       </div>
     </th>
   );
