@@ -5,6 +5,7 @@ import Dialog from "../../../ui/Dialog/Dialog";
 import PrimaryButton from "../../../ui/PrimaryButton/PrimaryButton";
 import SecondaryButton from "../../../ui/SecondaryButton/SecondaryButton";
 import styles from "./UploadImageDialog.module.scss";
+import StyledDropdownItem from "../../../ui/StyledDropdownItem/StyledDropdownItem";
 interface UploadImageDialogProps {
   coinId: string;
 }
@@ -30,9 +31,7 @@ function UploadImageDialog({ coinId }: UploadImageDialogProps) {
   return (
     <Dialog id="upload-image-dialog">
       <Dialog.Trigger>
-        <PrimaryButton className={styles["add-button"]}>
-          Загрузить фото
-        </PrimaryButton>
+        <StyledDropdownItem>Загрузить фото</StyledDropdownItem>
       </Dialog.Trigger>
       <Dialog.Window>
         <div className={styles.window}>
