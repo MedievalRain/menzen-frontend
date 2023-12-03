@@ -1,10 +1,18 @@
 import { PropsWithChildren } from "react";
 import styles from "./CollectionTableTip.module.scss";
-function CollectionTableTip({ children }: PropsWithChildren) {
+
+interface CollectionTableTipProps extends PropsWithChildren {
+  columnsCount: number;
+}
+
+function CollectionTableTip({
+  children,
+  columnsCount,
+}: CollectionTableTipProps) {
   return (
     <tbody>
       <tr>
-        <td className={styles.item} colSpan={9999}>
+        <td className={styles.item} colSpan={columnsCount}>
           {children}
         </td>
       </tr>

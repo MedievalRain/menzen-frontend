@@ -15,7 +15,11 @@ function CollectionTable({ collectionId }: CollectionTableProps) {
       <TableControls collectionId={collectionId} />
       <table className={styles.table}>
         <CollectionHead columns={columns} />
-        <CollectionTableBody collectionId={collectionId} coins={coins} />
+        <CollectionTableBody
+          columnsCount={columns?.length || 9999}
+          collectionId={collectionId}
+          coins={coins}
+        />
       </table>
     </div>
   );

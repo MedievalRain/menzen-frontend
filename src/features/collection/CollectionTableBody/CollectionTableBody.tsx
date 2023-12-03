@@ -9,27 +9,35 @@ interface CollectionTableBodyProps {
   coins: Coin[] | undefined;
 
   collectionId: string;
+  columnsCount: number;
 }
 
 function CollectionTableBody({
   coins,
   collectionId,
+  columnsCount,
 }: CollectionTableBodyProps) {
   const paginatedCoins = useAppSelector((state) =>
     selectPaginatedCoins(state.collection)
   );
   if (!coins)
     return (
-      <CollectionTableTip>
+      <CollectionTableTip columnsCount={columnsCount}>
         <Loader />
       </CollectionTableTip>
     );
 
   if (coins.length === 0)
     return (
-      <CollectionTableTip>
+      <CollectionTableTip columnsCount={columnsCount}>
         Начните добавлять монеты нажав на{" "}
         <NewCoinDialog collectionId={collectionId} />
+      </CollectionTableTip>
+    );
+  if (paginatedCoins.length === 0)
+    return (
+      <CollectionTableTip columnsCount={columnsCount}>
+        Ничего не найдено
       </CollectionTableTip>
     );
   return (
