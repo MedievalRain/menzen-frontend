@@ -9,10 +9,9 @@ import styles from "./DeleteCoinDialog.module.scss";
 import { useNavigate } from "react-router-dom";
 interface DeleteCoinDialogProps {
   coinId: string;
-  collectionId: string;
 }
 
-function DeleteCoinDialog({ coinId, collectionId }: DeleteCoinDialogProps) {
+function DeleteCoinDialog({ coinId }: DeleteCoinDialogProps) {
   const navigate = useNavigate();
   const [deleteCoin, { isError, error, isSuccess, isLoading }] =
     coinApi.useDeleteCoinMutation();

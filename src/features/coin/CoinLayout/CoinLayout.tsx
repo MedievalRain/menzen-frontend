@@ -16,7 +16,7 @@ function CoinLayout({ coinId, collectionId }: CoinLayoutProps) {
 
   return (
     <div className={styles.wrapper}>
-      <CoinDropdown collectionId={collectionId} coin={coin} />
+      <CoinDropdown coin={coin} />
       <div className={styles.content}>
         <CoinValuesList coin={coin} />
         <ImagesGallery imageIds={coin.imageIds} />

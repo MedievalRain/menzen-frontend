@@ -8,10 +8,9 @@ import EditCoinValuesDialog from "../EditCoinValuesDialog/EditCoinValuesDialog";
 import styles from "./CoinDropdown.module.scss";
 interface CoinDropdownProps {
   coin: FormattedCoin;
-  collectionId: string;
 }
 
-function CoinDropdown({ coin, collectionId }: CoinDropdownProps) {
+function CoinDropdown({ coin }: CoinDropdownProps) {
   return (
     <div className={styles.wrapper}>
       <Dropdown id="coin-dropdown">
@@ -25,7 +24,7 @@ function CoinDropdown({ coin, collectionId }: CoinDropdownProps) {
           <div className={styles.list}>
             <EditCoinValuesDialog coin={coin} />
             <UploadImageDialog coinId={coin.id} />
-            <DeleteCoinDialog coinId={coin.id} collectionId={collectionId} />
+            <DeleteCoinDialog coinId={coin.id} />
           </div>
         </Dropdown.List>
       </Dropdown>
