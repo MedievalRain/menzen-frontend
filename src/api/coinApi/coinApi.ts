@@ -8,7 +8,7 @@ import {
 
 export const coinApi = baseApi.injectEndpoints({
   endpoints: (builder) => ({
-    newCoin: builder.mutation<NewCoinResponse, NewCoinData>({
+    createCoin: builder.mutation<NewCoinResponse, NewCoinData>({
       query: (data) => ({
         url: "/coin/new",
         method: "POST",

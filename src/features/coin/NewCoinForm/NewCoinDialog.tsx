@@ -26,7 +26,7 @@ function NewCoinDialog({ collectionId }: NewCoinDialogProps) {
   useError(isError, error);
   const { columnValues, setColumnsValues } = useColumnValues();
   const [createCoin, { isSuccess, data: coinData }] =
-    coinApi.useNewCoinMutation();
+    coinApi.useCreateCoinMutation();
   const navigate = useNavigate();
 
   const handleSubmit = () => {
