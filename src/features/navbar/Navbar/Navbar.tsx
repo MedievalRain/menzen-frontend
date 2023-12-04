@@ -3,6 +3,7 @@ import NavLogo from "../../../ui/NavLogo/NavLogo";
 import styles from "./Navbar.module.scss";
 import { usePath } from "../hooks/usePath";
 import Breadcrumb from "../Breadcrumb/Breadcrumb";
+import AccountDropdown from "../../auth/AccountDropdown/AccountDropdown";
 
 function Navbar() {
   usePath();
@@ -14,7 +15,7 @@ function Navbar() {
         </Link>
       </div>
       <Breadcrumb />
-      <div></div>
+      <AccountDropdown />
     </nav>
   );
 }
