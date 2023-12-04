@@ -10,7 +10,9 @@ const LoginPage = lazy(() => import("./pages/LoginPage"));
 const TablesPage = lazy(
   () => import("./pages/CollectionsPage/CollectionsPage")
 );
-const VerificationPage = lazy(() => import("./pages/VerificationPage"));
+const VerificationPage = lazy(
+  () => import("./pages/VerificationPage/VerificationPage")
+);
 const CollectionPage = lazy(
   () => import("./pages/CollectionPage/CollectionPage")
 );

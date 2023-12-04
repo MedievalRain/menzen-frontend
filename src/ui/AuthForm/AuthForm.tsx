@@ -3,6 +3,7 @@ import Input from "../Input/Input";
 import styles from "./AuthForm.module.scss";
 import { Link } from "react-router-dom";
 import PrimaryButton from "../PrimaryButton/PrimaryButton";
+import Logo from "../Logo/Logo";
 
 interface AuthFormProps {
   email: string;
@@ -27,7 +28,7 @@ function AuthForm({
 }: AuthFormProps) {
   return (
     <>
-      <h1 className={styles.logo}>menzen</h1>
+      <Logo />
       <div className={`${styles.wrapper}`}>
         <form className={styles["form-container"]} onSubmit={handleSubmit}>
           <Input
