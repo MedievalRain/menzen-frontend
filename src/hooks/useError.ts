@@ -31,6 +31,7 @@ export const useError = (
   error: FetchBaseQueryError | SerializedError | undefined
 ) => {
   const navigate = useNavigate();
+
   useEffect(() => {
     if (isError && error) {
       if ("data" in error) {

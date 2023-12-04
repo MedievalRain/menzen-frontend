@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { useLocation } from "react-router-dom";
 import { collectionApi } from "../../../api/collectionApi/collectionApi";
+import { useError } from "../../../hooks/useError";
 
 interface Path {
   name: string;
@@ -8,10 +9,15 @@ interface Path {
 }
 
 export const usePath = () => {
-  const { data: collections, isSuccess } =
-    collectionApi.useGetCollectionsQuery();
+  const {
+    data: collections,
+    isSuccess,
+    isError,
+    error,
+  } = collectionApi.useGetCollectionsQuery();
   const [paths, setPaths] = useState<Path[]>([]);
   const location = useLocation();
+  useError(isError, error);
   useEffect(() => {
     const pathnames = location.pathname
       .split("/")
