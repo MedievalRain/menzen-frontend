@@ -1,4 +1,4 @@
-import { ReactNode } from "react";
+import { ReactNode, memo } from "react";
 import styles from "./StyledDropdownItem.module.scss";
 
 interface StyledDropdownItemProps {
@@ -6,12 +6,15 @@ interface StyledDropdownItemProps {
   children: ReactNode;
 }
 
-function StyledDropdownItem({ onClick, children }: StyledDropdownItemProps) {
+const StyledDropdownItem = memo(function StyledDropdownItem({
+  onClick,
+  children,
+}: StyledDropdownItemProps) {
   return (
     <button onClick={onClick} className={styles.button}>
       {children}
     </button>
   );
-}
+});
 
 export default StyledDropdownItem;

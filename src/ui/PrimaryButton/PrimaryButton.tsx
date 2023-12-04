@@ -1,4 +1,4 @@
-import { ReactNode } from "react";
+import { ReactNode, memo } from "react";
 import styles from "./PrimaryButton.module.scss";
 interface PrimaryButtonProps {
   children: ReactNode;
@@ -8,7 +8,7 @@ interface PrimaryButtonProps {
   className?: string;
 }
 
-function PrimaryButton({
+const PrimaryButton = memo(function PrimaryButton({
   onClick,
   children,
   type,
@@ -25,6 +25,6 @@ function PrimaryButton({
       {children}
     </button>
   );
-}
+});
 
 export default PrimaryButton;

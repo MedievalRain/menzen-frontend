@@ -1,4 +1,4 @@
-import { ReactNode } from "react";
+import { ReactNode, memo } from "react";
 import styles from "./SecondaryButton.module.scss";
 interface SecondaryButtonProps {
   children: ReactNode;
@@ -8,7 +8,7 @@ interface SecondaryButtonProps {
   className?: string;
 }
 
-function SecondaryButton({
+const SecondaryButton = memo(function SecondaryButton({
   onClick,
   children,
   type,
@@ -25,6 +25,6 @@ function SecondaryButton({
       {children}
     </button>
   );
-}
+});
 
 export default SecondaryButton;
