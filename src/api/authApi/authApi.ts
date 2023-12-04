@@ -38,5 +38,13 @@ export const authApi = baseApi.injectEndpoints({
       }),
       invalidatesTags: ["Collections", "Coin", "Coins", "Columns"],
     }),
+    deleteAccount: builder.mutation<void, void>({
+      query: () => ({
+        url: "/user",
+        method: "DELETE",
+        credentials: "include",
+      }),
+      invalidatesTags: ["Collections", "Coin", "Coins", "Columns"],
+    }),
   }),
 });
