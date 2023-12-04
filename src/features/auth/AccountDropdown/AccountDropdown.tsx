@@ -1,6 +1,7 @@
 import Dropdown from "../../../ui/Dropdown";
 import StyledDropdownItem from "../../../ui/StyledDropdownItem/StyledDropdownItem";
 import AccountIcon from "../../../ui/icons/AccountIcon";
+import LogoutDialog from "../LogoutDialog/LogoutDialog";
 import styles from "./AccountDropdown.module.scss";
 function AccountDropdown() {
   return (
@@ -14,7 +15,7 @@ function AccountDropdown() {
 
         <Dropdown.List>
           <div className={styles.list}>
-            <StyledDropdownItem>Выйти</StyledDropdownItem>
+            <LogoutDialog />
             <StyledDropdownItem>Удалить аккаунт</StyledDropdownItem>
           </div>
         </Dropdown.List>

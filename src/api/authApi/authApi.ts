@@ -10,7 +10,7 @@ export const authApi = baseApi.injectEndpoints({
         body: authData,
         credentials: "include",
       }),
-      invalidatesTags: ["Collections"],
+      invalidatesTags: ["Collections", "Coin", "Coins", "Columns"],
     }),
     login: builder.mutation<void, AuthData>({
       query: (authData) => ({
@@ -19,7 +19,7 @@ export const authApi = baseApi.injectEndpoints({
         body: authData,
         credentials: "include",
       }),
-      invalidatesTags: ["Collections"],
+      invalidatesTags: ["Collections", "Coin", "Coins", "Columns"],
     }),
     verify: builder.mutation<void, string>({
       query: (id) => ({
@@ -28,7 +28,15 @@ export const authApi = baseApi.injectEndpoints({
         body: { id },
         credentials: "include",
       }),
-      invalidatesTags: ["Collections"],
+      invalidatesTags: ["Collections", "Coin", "Coins", "Columns"],
+    }),
+    logout: builder.mutation<void, void>({
+      query: () => ({
+        url: "/user/logout",
+        method: "POST",
+        credentials: "include",
+      }),
+      invalidatesTags: ["Collections", "Coin", "Coins", "Columns"],
     }),
   }),
 });
