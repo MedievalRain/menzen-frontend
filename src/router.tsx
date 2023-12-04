@@ -1,13 +1,25 @@
 import { Navigate } from "react-router";
 import { createBrowserRouter } from "react-router-dom";
 import AppLayout from "./pages/AppLayout/AppLayout";
-import LoginPage from "./pages/LoginPage";
 import PagesLayout from "./pages/PagesLayout/PagesLayout";
-import RegisterPage from "./pages/RegisterPage";
-import TablesPage from "./pages/CollectionsPage/CollectionsPage";
-import VerificationPage from "./pages/VerificationPage";
-import CollectionPage from "./pages/CollectionPage/CollectionPage";
-import CoinPage from "./pages/CoinPage/CoinPage";
+import { PropsWithChildren, Suspense, lazy } from "react";
+import Loader from "./ui/Loader/Loader";
+
+const RegisterPage = lazy(() => import("./pages/RegisterPage"));
+const LoginPage = lazy(() => import("./pages/LoginPage"));
+const TablesPage = lazy(
+  () => import("./pages/CollectionsPage/CollectionsPage")
+);
+const VerificationPage = lazy(() => import("./pages/VerificationPage"));
+const CollectionPage = lazy(
+  () => import("./pages/CollectionPage/CollectionPage")
+);
+const CoinPage = lazy(() => import("./pages/CoinPage/CoinPage"));
+
+const LazyRoute = ({ children }: PropsWithChildren) => (
+  <Suspense fallback={<Loader />}>{children}</Suspense>
+);
+
 export const router = createBrowserRouter([
   {
     path: "/",
@@ -19,19 +31,35 @@ export const router = createBrowserRouter([
       },
       {
         path: "register",
-        element: <RegisterPage />,
+        element: (
+          <LazyRoute>
+            <RegisterPage />{" "}
+          </LazyRoute>
+        ),
       },
       {
         path: "login",
-        element: <LoginPage />,
+        element: (
+          <LazyRoute>
+            <LoginPage />
+          </LazyRoute>
+        ),
       },
       {
         path: "verification",
-        element: <VerificationPage />,
+        element: (
+          <LazyRoute>
+            <VerificationPage />
+          </LazyRoute>
+        ),
       },
       {
         path: "verification/:userId",
-        element: <VerificationPage />,
+        element: (
+          <LazyRoute>
+            <VerificationPage />
+          </LazyRoute>
+        ),
       },
       {
         path: "app",
@@ -44,12 +72,35 @@ export const router = createBrowserRouter([
           {
             path: "collections",
             children: [
-              { index: true, path: "", element: <TablesPage /> },
+              {
+                index: true,
+                path: "",
+                element: (
+                  <LazyRoute>
+                    <TablesPage />
+                  </LazyRoute>
+                ),
+              },
               {
                 path: ":collectionId",
                 children: [
-                  { index: true, path: "", element: <CollectionPage /> },
-                  { path: "coin/:coinId", element: <CoinPage /> },
+                  {
+                    index: true,
+                    path: "",
+                    element: (
+                      <LazyRoute>
+                        <CollectionPage />
+                      </LazyRoute>
+                    ),
+                  },
+                  {
+                    path: "coin/:coinId",
+                    element: (
+                      <LazyRoute>
+                        <CoinPage />
+                      </LazyRoute>
+                    ),
+                  },
                   { path: "coin", element: <Navigate to={".."} /> },
                 ],
               },
