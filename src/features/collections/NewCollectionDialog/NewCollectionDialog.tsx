@@ -13,7 +13,7 @@ function NewCollectionDialog() {
   const [name, setName] = useState("");
   useError(isError, error);
   const handleClick = () => {
-    newCollection(name);
+    newCollection(name.trim());
     setName("");
   };
   useEffect(() => {

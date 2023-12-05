@@ -39,7 +39,9 @@ function RenameCollectionDialog({ collection }: RenameCollectionDialogProps) {
               </Dialog.Close>
               <Dialog.Close>
                 <PrimaryButton
-                  onClick={() => renameCollection({ id: collection.id, name })}
+                  onClick={() =>
+                    renameCollection({ id: collection.id, name: name.trim() })
+                  }
                 >
                   Переименовать
                 </PrimaryButton>
