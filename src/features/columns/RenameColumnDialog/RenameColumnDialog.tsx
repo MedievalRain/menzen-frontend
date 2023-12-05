@@ -41,7 +41,11 @@ function RenameColumnDialog({ column, collectionId }: RenameColumnDialogProps) {
               <Dialog.Close>
                 <PrimaryButton
                   onClick={() =>
-                    renameColumn({ name, collectionId, columnId: column.id })
+                    renameColumn({
+                      name: name.trim(),
+                      collectionId,
+                      columnId: column.id,
+                    })
                   }
                 >
                   Переименовать

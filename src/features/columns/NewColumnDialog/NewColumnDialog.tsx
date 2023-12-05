@@ -17,7 +17,7 @@ function NewColumnDialog({ collectionId }: NewColumnDialogProps) {
   useError(isError, error);
 
   const handleClick = () => {
-    createColumn({ name, id: collectionId });
+    createColumn({ name: name.trim(), id: collectionId });
     setName("");
   };
   return (
