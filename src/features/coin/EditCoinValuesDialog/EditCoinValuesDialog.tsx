@@ -23,7 +23,7 @@ function EditCoinValuesDialog({ coin }: EditCoinValuesDialogProps) {
     setCoinValues((state) =>
       state.map((value) => {
         if (value.id === id) {
-          return { ...value, value: newValue };
+          return { ...value, value: newValue.trim() };
         } else {
           return value;
         }

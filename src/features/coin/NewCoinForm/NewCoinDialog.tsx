@@ -40,7 +40,12 @@ function NewCoinDialog({ collectionId }: NewCoinDialogProps) {
       }
       return acc;
     }, [] as CoinValue[]);
-    createCoin({ collectionId, values });
+    createCoin({
+      collectionId,
+      values: values.map((item) => {
+        return { ...item, value: item.value.trim() };
+      }),
+    });
   };
 
   useEffect(() => {
