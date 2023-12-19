@@ -136,3 +136,9 @@ button {
   background-color: transparent;
   cursor: pointer;
 }
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  line-height: normal;
+}

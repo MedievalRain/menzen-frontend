@@ -1,12 +1,13 @@
 .cell {
-  height: 4rem;
+  padding: 0.25rem;
+  vertical-align: middle;
 }
 
 .gallery {
-  padding: 0.25rem;
   display: flex;
   justify-content: center;
   gap: 0.25rem;
+  height: 100%;
 }
 .image {
   border-radius: 0.375rem;
