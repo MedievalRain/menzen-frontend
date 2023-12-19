@@ -9,4 +9,8 @@
   display: flex;
   justify-content: space-between;
   gap: 2rem;
+
+  @media (max-width: 1300px) {
+    flex-direction: column;
+  }
 }
